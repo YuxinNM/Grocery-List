@@ -21,7 +21,7 @@ public class GroceryList {
     //          with counts of the groceries in different food categories,
     //          percentages of different food categories of the list,
     //          and the total price of all the goceries
-    public void GroceryList() {
+    public GroceryList() {
         groceries = new ArrayList<Grocery>();
 
         vegeCount = 0;
@@ -45,7 +45,27 @@ public class GroceryList {
     //          increment the corresponding counts of the category,
     //          increase the total price with the grocery's price
     public void addGrocery(Grocery grocery) {
+        groceries.add(grocery);
+        countUp(grocery.getCategory());
+        totalPrice += grocery.getPrice();
+    }
 
+    // MODIFIES: this
+    // EFFECTS: helpder for addGrocery() 
+    //          increment the counts of the category 
+    //          corresponding to the given grocery's category
+    public void countUp(String category) {
+        if(category.equals("vegetables")) {
+            vegeCount++;
+        } else if(category.equals("fruits")) {
+            fruitCount++;
+        } else if(category.equals("grains")) {
+            grainsCount++;
+        } else if(category.equals("dairy products")) {
+            dairyCount++;
+        } else {
+            othersCount++;
+        }
     }
 
     // REQUIRES: grocery is in the list
@@ -54,63 +74,88 @@ public class GroceryList {
     //          decrease the corresponding counts of categories,
     //          decrease the total price with the grocery's price
     public void removeGrocery(Grocery grocery){
-
+        groceries.remove(grocery);
+        countDown(grocery.getCategory());
+        totalPrice -= grocery.getPrice();
     }
     
+    // MODIFIES: this
+    // EFFECTS: helper for removeGrocery()
+    //          decrease the counts of the category 
+    //          corresponding to the given grocery's category
+    public void countDown(String category) {
+        if(category.equals("vegetables")) {
+            vegeCount--;
+        } else if(category.equals("fruits")) {
+            fruitCount--;
+        } else if(category.equals("grains")) {
+            grainsCount--;
+        } else if(category.equals("dairy products")) {
+            dairyCount--;
+        } else {
+            othersCount--;
+        }
+    }
 
     // MODIFIES: this
     // EFFECTS: calculate the percentages of each category  
     //          counts of each category / the size of the list
-    public void calcPercent(String category){
-
+    public void calcPercent(){
+        int size = getGroceries().size();
+        this.vegePerct = getVegeCount()* 100/ size;
+        this.fruitPerct = getFruitCount()* 100/ size;
+        this.grainsPerct = getGrainsCount()* 100/ size;
+        this.dairyPerct = getDairyCount()* 100/ size;
+        this.othersPerct = getOthersCount()* 100/size;
     }
+
 
 
     public double getTotalPrice() {
-        return 0.00;
+        return totalPrice;
     }
 
     public int getVegeCount() {
-        return 0;
+        return vegeCount;
     }
 
     public int getFruitCount() {
-        return 0;
+        return fruitCount;
     }
 
     public int getGrainsCount() {
-        return 0;
+        return grainsCount;
     }
 
     public int getDairyCount() {
-        return 0;
+        return dairyCount;
     }
 
     public int getOthersCount() {
-        return 0;
+        return othersCount;
     }
 
     public double getVegePerct() {
-        return 0.0;
+        return vegePerct;
     }
 
     public double getFruitPerct() {
-        return 0.0;
+        return fruitPerct;
     }
 
     public double getGrainsPerct() {
-        return 0.0;
+        return grainsPerct;
     }
 
     public double getDairyPerct() {
-        return 0.0;
+        return dairyPerct;
     }
 
     public double getOthersPerct() {
-        return 0.0;
+        return othersPerct;
     }
 
     public ArrayList<Grocery> getGroceries(){
-        return null;
+        return groceries;
     }
 }
