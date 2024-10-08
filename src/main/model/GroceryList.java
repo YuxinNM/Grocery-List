@@ -39,9 +39,10 @@ public class GroceryList {
         totalPrice = 0.00;
     }
 
+    // REQUIRES: there cannot be duplicates of given grocery in the list
     // MODIFIES: this
-    // EFFECTS: add a new grocery to the list, there can be duplicates
-    //          increment the corresponding counts of categories,
+    // EFFECTS: add a new grocery to the list,
+    //          increment the corresponding counts of the category,
     //          increase the total price with the grocery's price
     public void addGrocery(Grocery grocery) {
 
@@ -56,15 +57,10 @@ public class GroceryList {
 
     }
     
-    // MODIFIES: this
-    // EFFECTS: sum up the prices of all groceries in the list
-    public void sumPrice() {
-
-    }
 
     // MODIFIES: this
-    // EFFECTS: calculate the percentages of each category 
-    //          and adjust each category's percentage
+    // EFFECTS: calculate the percentages of each category  
+    //          counts of each category / the size of the list
     public void calcPercent(String category){
 
     }
@@ -92,5 +88,29 @@ public class GroceryList {
 
     public int getOthersCount() {
         return 0;
+    }
+
+    public double getVegePerct() {
+        return 0.0;
+    }
+
+    public double getFruitPerct() {
+        return 0.0;
+    }
+
+    public double getGrainsPerct() {
+        return 0.0;
+    }
+
+    public double getDairyPerct() {
+        return 0.0;
+    }
+
+    public double getOthersPerct() {
+        return 0.0;
+    }
+
+    public ArrayList<Grocery> getGroceries(){
+        return null;
     }
 }
