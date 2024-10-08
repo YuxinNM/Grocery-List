@@ -98,7 +98,7 @@ public class GroceryList {
     }
 
     // MODIFIES: this
-    // EFFECTS: calculate the percentages of each category  
+    // EFFECTS: calculate the percentages of each category to ones digit 
     //          counts of each category / the size of the list
     public void calcPercent(){
         int size = getGroceries().size();
