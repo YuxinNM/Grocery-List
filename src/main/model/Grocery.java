@@ -21,14 +21,14 @@ public class Grocery {
     // MODIFIES: this
     // EFFECTS: change the grocery name to new name
     public void changeName(String newName) {
-
+        this.name = newName;
     }
      
-    // REQUIRES: newPrice >= 0
+    // REQUIRES: newPrice >= 0 & it should have 2 decimial places
     // MODIFIES: this
     // EFFECTS: change the price to the new price
     public void changePrice(double newPrice) {
-
+        this.price = newPrice;
     }
 
     // REQUIRES: newCategory would be one of the following: vegetables, fruits, 
@@ -36,18 +36,18 @@ public class Grocery {
     // MODIFIES: this
     // EFFECTS: change the category label to the new label
     public void changeCategory(String newCategory) {
-
+        this.category = newCategory;
     }
 
     public String getName() {
-        return "";
+        return this.name;
     }
 
     public double getPrice() {
-        return 0.00;
+        return this.price;
     }
 
     public String getCategory() {
-        return "";
+        return this.category;
     }
 }

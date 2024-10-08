@@ -42,6 +42,6 @@ public class GroceryTest {
         groceryTest.changeCategory("dairy products");
         assertEquals("dairy products", groceryTest.getCategory());
         groceryTest.changeCategory("vegetables");
-        assertEquals("dairy products", groceryTest.getCategory());
+        assertEquals("vegetables", groceryTest.getCategory());
     }
 }
