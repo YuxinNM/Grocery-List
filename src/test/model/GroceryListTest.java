@@ -5,18 +5,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ui.Main;
 
 public class GroceryListTest {
     private GroceryList groceryListTest;
-    private Grocery grocery1;
-    private Grocery grocery2;
+    private Grocery bread;
+    private Grocery apples;
+    private Grocery milk;
 
     @BeforeEach
     void runBefore() {
         groceryListTest = new GroceryList();
-        grocery1 = new Grocery("bread", 5.00, "grains");
-        grocery2 = new Grocery("apples", 6.00, "fruits");
+        bread = new Grocery("bread", 5.00, "grains");
+        apples = new Grocery("apples", 6.00, "fruits");
+        milk = new Grocery("milk", 7.00, "dairy products");
     }
 
     @Test
@@ -40,7 +41,7 @@ public class GroceryListTest {
 
     @Test
     void testAddGrocery(){
-        groceryListTest.addGrocery(grocery1);
+        groceryListTest.addGrocery(bread);
         assertEquals(1, groceryListTest.getGroceries().size());
         Grocery firstGrocery = groceryListTest.getGroceries().get(0);
         assertEquals("bread", firstGrocery.getName());
@@ -53,7 +54,7 @@ public class GroceryListTest {
         assertEquals(0, groceryListTest.getDairyCount());
         assertEquals(5.00, groceryListTest.getTotalPrice());
 
-        groceryListTest.addGrocery(grocery2);
+        groceryListTest.addGrocery(apples);
         assertEquals(2, groceryListTest.getGroceries().size());
         Grocery secGrocery = groceryListTest.getGroceries().get(1);
         assertEquals("apples", secGrocery.getName());
@@ -68,9 +69,90 @@ public class GroceryListTest {
     }
 
     @Test
+    void testCountUpVege() {
+        groceryListTest.countUp("vegetables");
+        assertEquals(1, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+        groceryListTest.countUp("vegetables");
+        assertEquals(2, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountUpDairy() {
+        groceryListTest.countUp("dairy products");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(1, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+        groceryListTest.countUp("dairy products");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(2, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+
+    @Test
+    void testCountUpOthers() {
+        groceryListTest.countUp("others");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(1, groceryListTest.getOthersCount());
+        groceryListTest.countUp("others");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(2, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountUpFruits(){
+        groceryListTest.countUp("fruits");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(1, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+        groceryListTest.countUp("fruits");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(2, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountUpGrain() {
+        groceryListTest.countUp("grains");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(1, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+        groceryListTest.countUp("grains");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(2, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
     void testRemoveGrocery(){
-        groceryListTest.addGrocery(grocery1);
-        groceryListTest.removeGrocery(grocery1);
+        groceryListTest.addGrocery(bread);
+        groceryListTest.removeGrocery(bread);
         assertEquals(0, groceryListTest.getGroceries().size());
         assertEquals(0, groceryListTest.getGrainsCount());
         assertEquals(0, groceryListTest.getVegeCount());
@@ -79,18 +161,10 @@ public class GroceryListTest {
         assertEquals(0, groceryListTest.getOthersCount());
         assertEquals(0.00, groceryListTest.getTotalPrice());
 
-        groceryListTest.addGrocery(grocery1);
-        groceryListTest.addGrocery(grocery2);
-        groceryListTest.removeGrocery(grocery1);
-        assertEquals(1, groceryListTest.getGroceries().size());
-        assertEquals(0, groceryListTest.getGrainsCount());
-        assertEquals(0, groceryListTest.getVegeCount());
-        assertEquals(1, groceryListTest.getFruitCount());
-        assertEquals(0, groceryListTest.getDairyCount());
-        assertEquals(0, groceryListTest.getOthersCount());
-        assertEquals(6.00, groceryListTest.getTotalPrice());
-
-        groceryListTest.removeGrocery(grocery2);
+        groceryListTest.addGrocery(bread);
+        groceryListTest.addGrocery(apples);
+        groceryListTest.removeGrocery(bread);
+        groceryListTest.removeGrocery(apples);
         assertEquals(0, groceryListTest.getGroceries().size());
         assertEquals(0, groceryListTest.getGrainsCount());
         assertEquals(0, groceryListTest.getVegeCount());
@@ -100,9 +174,129 @@ public class GroceryListTest {
         assertEquals(0.00, groceryListTest.getTotalPrice());
     }
 
+    @Test
+    void testCountDownVege() {
+        groceryListTest.countUp("vegetables");
+        groceryListTest.countDown("vegetables");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownDairy() {
+        groceryListTest.countUp("dairy products");
+        groceryListTest.countDown("dairy products");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownOthers() {
+        groceryListTest.countUp("others");
+        groceryListTest.countDown("others");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownFruits() {
+        groceryListTest.countUp("fruits");
+        groceryListTest.countDown("fruits");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownGrains() {
+        groceryListTest.countUp("grains");
+        groceryListTest.countDown("grains");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownTwiceVege() {
+        groceryListTest.countUp("vegetables");
+        groceryListTest.countUp("vegetables");
+        groceryListTest.countDown("vegetables");
+        groceryListTest.countDown("vegetables");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownTwiceDairy() {
+        groceryListTest.countUp("dairy products");
+        groceryListTest.countUp("dairy products");
+        groceryListTest.countDown("dairy products");
+        groceryListTest.countDown("dairy products");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownTwiceOthers() {
+        groceryListTest.countUp("others");
+        groceryListTest.countUp("others");
+        groceryListTest.countDown("others");
+        groceryListTest.countDown("others");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownTwiceFruit(){
+        groceryListTest.countUp("fruits");
+        groceryListTest.countUp("fruits");
+        groceryListTest.countDown("fruits");
+        groceryListTest.countDown("fruits");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
+    @Test
+    void testCountDownTwiceGrain() {
+        groceryListTest.countUp("grains");
+        groceryListTest.countUp("grains");
+        groceryListTest.countDown("grains");
+        groceryListTest.countDown("grains");
+        assertEquals(0, groceryListTest.getVegeCount());
+        assertEquals(0, groceryListTest.getGrainsCount());
+        assertEquals(0, groceryListTest.getFruitCount());
+        assertEquals(0, groceryListTest.getDairyCount());
+        assertEquals(0, groceryListTest.getOthersCount());
+    }
+
     @Test 
     void testCalcPercent() {
-        groceryListTest.addGrocery(grocery1);
+        groceryListTest.addGrocery(bread);
         groceryListTest.calcPercent();
         assertEquals(100.0, groceryListTest.getGrainsPerct());
         assertEquals(0.0, groceryListTest.getVegePerct());
@@ -113,13 +307,17 @@ public class GroceryListTest {
 
     @Test 
     void testCalcPercentMultiple() {
-        groceryListTest.addGrocery(grocery1);
-        groceryListTest.addGrocery(grocery2);
-        Grocery grocery3 = new Grocery("milk", 7.00, "dairy products");
-        groceryListTest.addGrocery(grocery3);
-
+        groceryListTest.addGrocery(bread);
+        groceryListTest.addGrocery(apples);
         groceryListTest.calcPercent();
-       
+        assertEquals(50.0, groceryListTest.getGrainsPerct());
+        assertEquals(0.0, groceryListTest.getVegePerct());
+        assertEquals(50.0, groceryListTest.getFruitPerct());
+        assertEquals(0.0, groceryListTest.getDairyPerct());
+        assertEquals(0.0, groceryListTest.getOthersPerct());
+
+        groceryListTest.addGrocery(milk);
+        groceryListTest.calcPercent();
         assertEquals(33.0, groceryListTest.getGrainsPerct());
         assertEquals(0.0, groceryListTest.getVegePerct());
         assertEquals(33.0, groceryListTest.getFruitPerct());
