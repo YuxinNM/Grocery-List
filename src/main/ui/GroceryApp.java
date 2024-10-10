@@ -66,12 +66,12 @@ public class GroceryApp {
 
     // EFFECTS: print the total price of groceries
     private void printPrice() {
-       
+       System.out.println("\nThe total price of the groceries in the list: $" + groceryList.getTotalPrice());
     }
 
     // EFFECTS: print the list of groceries 
     private void printList() {
-        
+        System.out.println(groceryList.getGroceries());
     }
 
     // MODIFIES: this
