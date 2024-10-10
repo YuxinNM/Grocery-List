@@ -2,6 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
+import model.Grocery;
 import model.GroceryList;
 
 public class GroceryApp {
@@ -83,7 +84,32 @@ public class GroceryApp {
     // MODIFIES: this
     // EFFECTS: add a grocery to the list
     private void addGrocery() {
-        
+        System.out.println("\nPlease enter the name of grocery:");
+        String name = input.next();
+
+        System.out.println("\nPlease enter the price of grocery: $");
+        double price = roundTwoDeci(input.nextDouble());
+
+        System.out.println("\nPlease select from one of the following categories of the grocery:");
+        System.out.println("\tvegetables");
+        System.out.println("\tfruits");
+        System.out.println("\tgrains");
+        System.out.println("\tdairy products");
+        System.out.println("\tothers");
+        String category = sortCategory(input.next());
+
+        Grocery newGrocery = new Grocery(name, price, category);
+        groceryList.addGrocery(newGrocery);
+    }
+
+    // EFFECTS: return a number with two decimals
+    private double roundTwoDeci(double nextDouble) {
+       return 0.00;
+    }
+
+    // EFFECTS: categorize the input as "others" if it is not any of the given options
+    private String sortCategory(String category) {
+        return "";
     }
 
     // EFFECTS: displays the options of commands user can make
@@ -104,7 +130,4 @@ public class GroceryApp {
        input = new Scanner(System.in);
        input.useDelimiter("\r?\n|\r");
     }
-
-
-
 }
