@@ -56,7 +56,12 @@ public class GroceryApp {
 
     // EFFECTS: print the percentages of food groups of the groceries
     private void printGroupsPerct() {
-        
+        System.out.println("\nNutrition Report: Distribution of Food Groups");
+        System.out.println("\tVegetables: " + groceryList.getVegePerct() + "%");
+        System.out.println("\tFruits: " + groceryList.getFruitPerct() + "%");
+        System.out.println("\tGrains: " + groceryList.getGrainsPerct() + "%");
+        System.out.println("\tDairy Products: " + groceryList.getDairyPerct() + "%");
+        System.out.println("\tOthers: " + groceryList.getOthersPerct() + "%");
     }
 
     // EFFECTS: print the total price of groceries
