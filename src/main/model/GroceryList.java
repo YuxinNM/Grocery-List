@@ -6,13 +6,13 @@ public class GroceryList {
     private int vegeCount;
     private int fruitCount;
     private int grainsCount;
-    private int dairyCount;
+    private int proteinCount;
     private int othersCount;
 
     private double vegePerct;
     private double fruitPerct;
     private double grainsPerct;
-    private double dairyPerct;
+    private double proteinPerct;
     private double othersPerct;
 
     private double totalPrice;
@@ -27,13 +27,13 @@ public class GroceryList {
         vegeCount = 0;
         fruitCount = 0;
         grainsCount = 0;
-        dairyCount = 0;
+        proteinCount = 0;
         othersCount = 0;
 
         vegePerct = 0.0;
         fruitPerct = 0.0;
         grainsPerct = 0.0;
-        dairyPerct = 0.0;
+        proteinPerct = 0.0;
         othersPerct = 0.0;
 
         totalPrice = 0.00;
@@ -57,12 +57,12 @@ public class GroceryList {
     public void countUp(String category) {
         if(category.equals("vegetables")) {
             vegeCount++;
-        } else if(category.equals("proteins")) {
+        } else if(category.equals("fruits")) {
             fruitCount++;
         } else if(category.equals("grains")) {
             grainsCount++;
-        } else if(category.equals("dairy products")) {
-            dairyCount++;
+        } else if(category.equals("proteins")) {
+            proteinCount++;
         } else {
             othersCount++;
         }
@@ -86,12 +86,12 @@ public class GroceryList {
     public void countDown(String category) {
         if(category.equals("vegetables")) {
             vegeCount--;
-        } else if(category.equals("proteins")) {
+        } else if(category.equals("fruits")) {
             fruitCount--;
         } else if(category.equals("grains")) {
             grainsCount--;
-        } else if(category.equals("dairy products")) {
-            dairyCount--;
+        } else if(category.equals("proteins")) {
+            proteinCount--;
         } else {
             othersCount--;
         }
@@ -105,7 +105,7 @@ public class GroceryList {
         this.vegePerct = getVegeCount()* 100/ size;
         this.fruitPerct = getFruitCount()* 100/ size;
         this.grainsPerct = getGrainsCount()* 100/ size;
-        this.dairyPerct = getDairyCount()* 100/ size;
+        this.proteinPerct = getProteinCount()* 100/ size;
         this.othersPerct = getOthersCount()* 100/size;
     }
 
@@ -127,8 +127,8 @@ public class GroceryList {
         return grainsCount;
     }
 
-    public int getDairyCount() {
-        return dairyCount;
+    public int getProteinCount() {
+        return proteinCount;
     }
 
     public int getOthersCount() {
@@ -147,8 +147,8 @@ public class GroceryList {
         return grainsPerct;
     }
 
-    public double getDairyPerct() {
-        return dairyPerct;
+    public double getProteinPerct() {
+        return proteinPerct;
     }
 
     public double getOthersPerct() {

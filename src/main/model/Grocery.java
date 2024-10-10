@@ -7,8 +7,8 @@ public class Grocery {
     private String category;
 
     // REQUIRES: price >= 0 & price should have 2 decimial places, name is not an empty string
-    //          food category would be one of the following: vegetables, proteins, 
-    //          grains, dairy products, and others
+    //          food category would be one of the following: vegetables, fruits, 
+    //          grains, proteins, and others
     // EFFECTS: create a grocery entry with given name, price and food category.
     
     public Grocery(String name, Double price, String category) {
@@ -32,7 +32,7 @@ public class Grocery {
     }
 
     // REQUIRES: newCategory would be one of the following: vegetables, proteins, 
-    //          grains, dairy products, and others
+    //          grains, proteins, and others
     // MODIFIES: this
     // EFFECTS: change the category label to the new label
     public void changeCategory(String newCategory) {
