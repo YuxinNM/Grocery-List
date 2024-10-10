@@ -60,7 +60,7 @@ public class GroceryApp {
     private void printGroupsPerct() {
         System.out.println("\nNutrition Report: Distribution of Food Groups");
         System.out.println("\tVegetables: " + groceryList.getVegePerct() + "%");
-        System.out.println("\tFruits: " + groceryList.getFruitPerct() + "%");
+        System.out.println("\tProteins: " + groceryList.getFruitPerct() + "%");
         System.out.println("\tGrains: " + groceryList.getGrainsPerct() + "%");
         System.out.println("\tDairy Products: " + groceryList.getDairyPerct() + "%");
         System.out.println("\tOthers: " + groceryList.getOthersPerct() + "%");
@@ -95,7 +95,7 @@ public class GroceryApp {
 
         System.out.println("\nPlease select from one of the following categories of the grocery:");
         System.out.println("\tvegetables");
-        System.out.println("\tfruits");
+        System.out.println("\tproteins");
         System.out.println("\tgrains");
         System.out.println("\tdairy products");
         System.out.println("\tothers");
@@ -109,7 +109,7 @@ public class GroceryApp {
 
     // EFFECTS: categorize the input as "others" if it is not any of the given options
     private String sortCategory(String category) {
-        if (category.equals("vegetables")|category.equals("fruits")|category.equals("grains")|category.equals("dairy prodects")){
+        if (category.equals("vegetables")|category.equals("proteins")|category.equals("grains")|category.equals("dairy prodects")){
             return category;
         } else {
             return "others";

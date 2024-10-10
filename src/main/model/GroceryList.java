@@ -57,7 +57,7 @@ public class GroceryList {
     public void countUp(String category) {
         if(category.equals("vegetables")) {
             vegeCount++;
-        } else if(category.equals("fruits")) {
+        } else if(category.equals("proteins")) {
             fruitCount++;
         } else if(category.equals("grains")) {
             grainsCount++;
@@ -86,7 +86,7 @@ public class GroceryList {
     public void countDown(String category) {
         if(category.equals("vegetables")) {
             vegeCount--;
-        } else if(category.equals("fruits")) {
+        } else if(category.equals("proteins")) {
             fruitCount--;
         } else if(category.equals("grains")) {
             grainsCount--;

@@ -7,7 +7,7 @@ public class Grocery {
     private String category;
 
     // REQUIRES: price >= 0 & price should have 2 decimial places, name is not an empty string
-    //          food category would be one of the following: vegetables, fruits, 
+    //          food category would be one of the following: vegetables, proteins, 
     //          grains, dairy products, and others
     // EFFECTS: create a grocery entry with given name, price and food category.
     
@@ -31,7 +31,7 @@ public class Grocery {
         this.price = newPrice;
     }
 
-    // REQUIRES: newCategory would be one of the following: vegetables, fruits, 
+    // REQUIRES: newCategory would be one of the following: vegetables, proteins, 
     //          grains, dairy products, and others
     // MODIFIES: this
     // EFFECTS: change the category label to the new label
