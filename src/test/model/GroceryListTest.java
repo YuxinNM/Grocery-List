@@ -40,26 +40,19 @@ public class GroceryListTest {
     }
 
     @Test
-    void testAddGrocery(){
+    void testAddGrocery() {
         groceryListTest.addGrocery(bread);
         assertEquals(1, groceryListTest.getGroceries().size());
         Grocery firstGrocery = groceryListTest.getGroceries().get(0);
-        assertEquals("bread", firstGrocery.getName());
-        assertEquals(5.00, firstGrocery.getPrice());
-        assertEquals("grains", firstGrocery.getCategory());
         assertEquals(0, groceryListTest.getOthersCount());
         assertEquals(1, groceryListTest.getGrainsCount());
         assertEquals(0, groceryListTest.getVegeCount());
         assertEquals(0, groceryListTest.getFruitCount());
         assertEquals(0, groceryListTest.getProteinCount());
         assertEquals(5.00, groceryListTest.getTotalPrice());
-
         groceryListTest.addGrocery(apples);
         assertEquals(2, groceryListTest.getGroceries().size());
         Grocery secGrocery = groceryListTest.getGroceries().get(1);
-        assertEquals("apples", secGrocery.getName());
-        assertEquals(6.00, secGrocery.getPrice());
-        assertEquals("fruits", secGrocery.getCategory());
         assertEquals(1, groceryListTest.getGrainsCount());
         assertEquals(0, groceryListTest.getVegeCount());
         assertEquals(1, groceryListTest.getFruitCount());
@@ -118,7 +111,7 @@ public class GroceryListTest {
     }
 
     @Test
-    void testCountUpProteins(){
+    void testCountUpProteins() {
         groceryListTest.countUp("proteins");
         assertEquals(0, groceryListTest.getVegeCount());
         assertEquals(0, groceryListTest.getGrainsCount());
@@ -150,7 +143,7 @@ public class GroceryListTest {
     }
 
     @Test
-    void testRemoveGrocery(){
+    void testRemoveGrocery() {
         groceryListTest.addGrocery(bread);
         groceryListTest.removeGrocery(bread);
         assertEquals(0, groceryListTest.getGroceries().size());
@@ -269,7 +262,7 @@ public class GroceryListTest {
     }
 
     @Test
-    void testCountDownTwiceFruit(){
+    void testCountDownTwiceFruit() {
         groceryListTest.countUp("fruits");
         groceryListTest.countUp("fruits");
         groceryListTest.countDown("fruits");

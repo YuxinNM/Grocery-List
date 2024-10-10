@@ -1,4 +1,5 @@
 package model;
+
 import java.util.*;
 
 public class GroceryList {
@@ -55,13 +56,13 @@ public class GroceryList {
     //          increment the counts of the category 
     //          corresponding to the given grocery's category
     public void countUp(String category) {
-        if(category.equals("vegetables")) {
+        if (category.equals("vegetables")) {
             vegeCount++;
-        } else if(category.equals("fruits")) {
+        } else if (category.equals("fruits")) {
             fruitCount++;
-        } else if(category.equals("grains")) {
+        } else if (category.equals("grains")) {
             grainsCount++;
-        } else if(category.equals("proteins")) {
+        } else if (category.equals("proteins")) {
             proteinCount++;
         } else {
             othersCount++;
@@ -73,7 +74,7 @@ public class GroceryList {
     // EFFECTS: remove a new grocery to the list, 
     //          decrease the corresponding counts of categories,
     //          decrease the total price with the grocery's price
-    public void removeGrocery(Grocery grocery){
+    public void removeGrocery(Grocery grocery) {
         groceries.remove(grocery);
         countDown(grocery.getCategory());
         totalPrice -= grocery.getPrice();
@@ -84,13 +85,13 @@ public class GroceryList {
     //          decrease the counts of the category 
     //          corresponding to the given grocery's category
     public void countDown(String category) {
-        if(category.equals("vegetables")) {
+        if (category.equals("vegetables")) {
             vegeCount--;
-        } else if(category.equals("fruits")) {
+        } else if (category.equals("fruits")) {
             fruitCount--;
-        } else if(category.equals("grains")) {
+        } else if (category.equals("grains")) {
             grainsCount--;
-        } else if(category.equals("proteins")) {
+        } else if (category.equals("proteins")) {
             proteinCount--;
         } else {
             othersCount--;
@@ -100,13 +101,13 @@ public class GroceryList {
     // MODIFIES: this
     // EFFECTS: calculate the percentages of each category to ones digit 
     //          counts of each category / the size of the list
-    public void calcPercent(){
+    public void calcPercent() {
         int size = getGroceries().size();
-        this.vegePerct = getVegeCount()* 100/ size;
-        this.fruitPerct = getFruitCount()* 100/ size;
-        this.grainsPerct = getGrainsCount()* 100/ size;
-        this.proteinPerct = getProteinCount()* 100/ size;
-        this.othersPerct = getOthersCount()* 100/size;
+        this.vegePerct = getVegeCount() * 100 / size;
+        this.fruitPerct = getFruitCount() * 100 / size;
+        this.grainsPerct = getGrainsCount() * 100 / size;
+        this.proteinPerct = getProteinCount() * 100 / size;
+        this.othersPerct = getOthersCount() * 100 / size;
     }
 
 
@@ -155,7 +156,7 @@ public class GroceryList {
         return othersPerct;
     }
 
-    public ArrayList<Grocery> getGroceries(){
+    public ArrayList<Grocery> getGroceries() {
         return groceries;
     }
 }
