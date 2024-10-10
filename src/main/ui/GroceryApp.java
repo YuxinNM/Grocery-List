@@ -58,6 +58,7 @@ public class GroceryApp {
 
     // EFFECTS: print the percentages of food groups of the groceries
     private void printGroupsPerct() {
+        groceryList.calcPercent();
         System.out.println("\nNutrition Report: Distribution of Food Groups");
         System.out.println("\tVegetables: " + groceryList.getVegePerct() + "%");
         System.out.println("\tProteins: " + groceryList.getFruitPerct() + "%");
@@ -90,26 +91,30 @@ public class GroceryApp {
         System.out.println("\nPlease enter the name of grocery:");
         String name = input.next();
 
-        System.out.println("\nPlease enter the price of grocery: $");
+        System.out.println("\nPlease enter the price of grocery with 2 decimals: $");
         double price = input.nextDouble();
+        if (price < 0){
+            System.out.println("Invalid price");
+        } else {
+            System.out.println("\nPlease select from one of the following categories of the grocery:");
+            System.out.println("\tvegetables");
+            System.out.println("\tproteins");
+            System.out.println("\tgrains");
+            System.out.println("\tdairy products");
+            System.out.println("\tothers");
+            String category = sortCategory(input.next());
 
-        System.out.println("\nPlease select from one of the following categories of the grocery:");
-        System.out.println("\tvegetables");
-        System.out.println("\tproteins");
-        System.out.println("\tgrains");
-        System.out.println("\tdairy products");
-        System.out.println("\tothers");
-        String category = sortCategory(input.next());
+            Grocery newGrocery = new Grocery(name, price, category);
+            groceryList.addGrocery(newGrocery);
 
-        Grocery newGrocery = new Grocery(name, price, category);
-        groceryList.addGrocery(newGrocery);
-
-        System.out.println("You have successfully added the grocery!");
+            System.out.println("You have successfully added the grocery!");
+        }
+        
     }
 
     // EFFECTS: categorize the input as "others" if it is not any of the given options
     private String sortCategory(String category) {
-        if (category.equals("vegetables")|category.equals("proteins")|category.equals("grains")|category.equals("dairy prodects")){
+        if (category.equals("vegetables")|category.equals("proteins")|category.equals("grains")|category.equals("dairy products")){
             return category;
         } else {
             return "others";
