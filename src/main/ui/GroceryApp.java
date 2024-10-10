@@ -73,7 +73,9 @@ public class GroceryApp {
 
     // EFFECTS: print the list of groceries 
     private void printList() {
-        System.out.println(groceryList.getGroceries());
+        for (Grocery next: groceryList.getGroceries()) {
+            System.out.println(next.getName() + "   $" + next.getPrice() + "    " + next.getCategory());
+        }
     }
 
     // MODIFIES: this
