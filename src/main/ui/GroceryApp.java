@@ -1,5 +1,6 @@
 package ui;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import model.Grocery;
@@ -88,7 +89,7 @@ public class GroceryApp {
         String name = input.next();
 
         System.out.println("\nPlease enter the price of grocery: $");
-        double price = roundTwoDeci(input.nextDouble());
+        double price = input.nextDouble();
 
         System.out.println("\nPlease select from one of the following categories of the grocery:");
         System.out.println("\tvegetables");
@@ -100,16 +101,17 @@ public class GroceryApp {
 
         Grocery newGrocery = new Grocery(name, price, category);
         groceryList.addGrocery(newGrocery);
-    }
 
-    // EFFECTS: return a number with two decimals
-    private double roundTwoDeci(double nextDouble) {
-       return 0.00;
+        System.out.println("You have successfully added the grocery!");
     }
 
     // EFFECTS: categorize the input as "others" if it is not any of the given options
     private String sortCategory(String category) {
-        return "";
+        if (category.equals("vegetables")|category.equals("fruits")|category.equals("grains")|category.equals("dairy prodects")){
+            return category;
+        } else {
+            return "others";
+        }
     }
 
     // EFFECTS: displays the options of commands user can make
