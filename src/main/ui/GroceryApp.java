@@ -1,6 +1,5 @@
 package ui;
 
-import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import model.Grocery;
@@ -23,12 +22,12 @@ public class GroceryApp {
 
         init();
 
-        while(keepGoing) {
+        while (keepGoing) {
             displayMenu();
             command = input.next();
             command = command.toLowerCase();
 
-            if(command.equals("q")){
+            if (command.equals("q")) {
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -49,7 +48,7 @@ public class GroceryApp {
             printList();
         } else if (command.equals("p")) {
             printPrice();
-        } else if (command.equals("n")){
+        } else if (command.equals("n")) {
             printGroupsPerct();
         } else {
             System.out.println("Selection not valid...");
@@ -61,7 +60,7 @@ public class GroceryApp {
         groceryList.calcPercent();
         System.out.println("\nNutrition Report: Distribution of Food Groups");
         System.out.println("\tVegetables: " + groceryList.getVegePerct() + "%");
-        System.out.println("\\tFruits: " + groceryList.getFruitPerct() + "%");
+        System.out.println("\tFruits: " + groceryList.getFruitPerct() + "%");
         System.out.println("\tGrains: " + groceryList.getGrainsPerct() + "%");
         System.out.println("\tProteins: " + groceryList.getProteinPerct() + "%");
         System.out.println("\tOthers: " + groceryList.getOthersPerct() + "%");
@@ -69,7 +68,7 @@ public class GroceryApp {
 
     // EFFECTS: print the total price of groceries
     private void printPrice() {
-       System.out.println("\nThe total price of the groceries in the list: $" + groceryList.getTotalPrice());
+        System.out.println("\nThe total price of the groceries in the list: $" + groceryList.getTotalPrice());
     }
 
     // EFFECTS: print the list of groceries 
@@ -82,7 +81,20 @@ public class GroceryApp {
     // MODIFIES: this
     // EFFECTS: remove a grocery from the list
     private void removeGrocery() {
-        
+        System.out.println("\nPlease enter the name of the grocery you want to remove:");
+        String nameToRemove = input.next();
+        boolean nameInList = false;
+        for (Grocery next: groceryList.getGroceries()) {
+            if (next.getName().equals(nameToRemove)) {
+                groceryList.removeGrocery(next);
+                nameInList = true;
+                System.out.println(next.getName() + " has been successfully removed");
+            }
+        }
+
+        if (!nameInList) {
+            System.out.println("\nThe grocery is not in the list...");
+        }
     }
 
     // MODIFIES: this
@@ -93,7 +105,7 @@ public class GroceryApp {
 
         System.out.println("\nPlease enter the price of grocery with 2 decimals: $");
         double price = input.nextDouble();
-        if (price < 0){
+        if (price < 0) {
             System.out.println("Invalid price");
         } else {
             System.out.println("\nPlease select from one of the following categories of the grocery:");
@@ -114,7 +126,10 @@ public class GroceryApp {
 
     // EFFECTS: categorize the input as "others" if it is not any of the given options
     private String sortCategory(String category) {
-        if (category.equals("vegetables")|category.equals("proteins")|category.equals("grains")|category.equals("fruits")){
+        if (category.equals("vegetables") 
+                || category.equals("proteins") 
+                || category.equals("grains") 
+                || category.equals("fruits")) {
             return category;
         } else {
             return "others";
@@ -135,8 +150,8 @@ public class GroceryApp {
     // MODIFIES: this
     // EFFECTS: initializes the grocery list
     private void init() {
-       groceryList = new GroceryList(); 
-       input = new Scanner(System.in);
-       input.useDelimiter("\r?\n|\r");
+        groceryList = new GroceryList(); 
+        input = new Scanner(System.in);
+        input.useDelimiter("\r?\n|\r");
     }
 }
