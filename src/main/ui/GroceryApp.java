@@ -5,7 +5,7 @@ import java.util.Scanner;
 import model.GroceryList;
 
 public class GroceryApp {
-    private GroceryList grocerylist;
+    private GroceryList groceryList;
     private Scanner input;
 
     // EFFECTS: runs the console 
@@ -39,6 +39,45 @@ public class GroceryApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
+        if (command.equals("a")) {
+            addGrocery();
+        } else if (command.equals("r")) {
+            removeGrocery();
+        } else if (command.equals("v")) {
+            printList();
+        } else if (command.equals("p")) {
+            printPrice();
+        } else if (command.equals("n")){
+            printGroupsPerct();
+        } else {
+            System.out.println("Selection not valid...");
+        }
+    }
+
+    // EFFECTS: print the percentages of food groups of the groceries
+    private void printGroupsPerct() {
+        
+    }
+
+    // EFFECTS: print the total price of groceries
+    private void printPrice() {
+       
+    }
+
+    // EFFECTS: print the list of groceries 
+    private void printList() {
+        
+    }
+
+    // MODIFIES: this
+    // EFFECTS: remove a grocery from the list
+    private void removeGrocery() {
+        
+    }
+
+    // MODIFIES: this
+    // EFFECTS: add a grocery to the list
+    private void addGrocery() {
         
     }
 
@@ -56,8 +95,11 @@ public class GroceryApp {
     // MODIFIES: this
     // EFFECTS: initializes the grocery list
     private void init() {
-        
+       groceryList = new GroceryList(); 
+       input = new Scanner(System.in);
+       input.useDelimiter("\r?\n|\r");
     }
+
 
 
 }
