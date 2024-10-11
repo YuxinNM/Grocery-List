@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Grocery;
@@ -57,13 +58,17 @@ public class GroceryApp {
 
     // EFFECTS: print the percentages of food groups of the groceries
     private void printGroupsPerct() {
-        groceryList.calcPercent();
-        System.out.println("\nNutrition Report: Distribution of Food Groups");
-        System.out.println("\tVegetables: " + groceryList.getVegePerct() + "%");
-        System.out.println("\tFruits: " + groceryList.getFruitPerct() + "%");
-        System.out.println("\tGrains: " + groceryList.getGrainsPerct() + "%");
-        System.out.println("\tProteins: " + groceryList.getProteinPerct() + "%");
-        System.out.println("\tOthers: " + groceryList.getOthersPerct() + "%");
+        if (groceryList.getGroceries().size() > 0) {
+            groceryList.calcPercent();
+            System.out.println("\nNutrition Report: Distribution of Food Groups");
+            System.out.println("\tVegetables: " + groceryList.getVegePerct() + "%");
+            System.out.println("\tFruits: " + groceryList.getFruitPerct() + "%");
+            System.out.println("\tGrains: " + groceryList.getGrainsPerct() + "%");
+            System.out.println("\tProteins: " + groceryList.getProteinPerct() + "%");
+            System.out.println("\tOthers: " + groceryList.getOthersPerct() + "%");
+        } else {
+            System.out.println("Please add groceries in the list first.");
+        }
     }
 
     // EFFECTS: print the total price of groceries
@@ -73,28 +78,44 @@ public class GroceryApp {
 
     // EFFECTS: print the list of groceries 
     private void printList() {
-        for (Grocery next: groceryList.getGroceries()) {
-            System.out.println(next.getName() + "   $" + next.getPrice() + "    " + next.getCategory());
+        if (groceryList.getGroceries().size() > 0) {
+            System.out.println("\nHere is the list of groceries:\na");
+            for (Grocery next: groceryList.getGroceries()) {
+                System.out.println(next.getName() + "   $" + next.getPrice() + "    " + next.getCategory());
+            }
+        } else {
+            System.out.println("There is no grocery in the list yet.");
         }
     }
 
     // MODIFIES: this
     // EFFECTS: remove a grocery from the list
     private void removeGrocery() {
-        System.out.println("\nPlease enter the name of the grocery you want to remove:");
-        String nameToRemove = input.next();
-        boolean nameInList = false;
-        for (Grocery next: groceryList.getGroceries()) {
-            if (next.getName().equals(nameToRemove)) {
-                groceryList.removeGrocery(next);
-                nameInList = true;
-                System.out.println(next.getName() + " has been successfully removed");
+        if (groceryList.getGroceries().size() > 0) {
+            System.out.println("\nPlease enter the name of the grocery you want to remove:");
+            String nameToRemove = input.next();
+            boolean nameInList = removeFirstInList(groceryList, nameToRemove);
+            if (nameInList) {
+                System.out.println(nameToRemove + " has been successfully removed");
+            } else {
+                System.out.println("\nThe grocery is not in the list...");
+            }
+        } else {
+            System.out.println("There is no grocery in the list yet.");
+        }
+    }
+
+    // EFFECTS: removes the first grocery with given name in the groceryList
+    //          return true if grocery was in the list, false if cannot find it
+    private boolean removeFirstInList(GroceryList groceryList, String nameToRemove) {
+        for (int i = 0; i < groceryList.getGroceries().size(); i++) {
+            Grocery current =  groceryList.getGroceries().get(i);
+            if (current.getName().equals(nameToRemove)) {
+                groceryList.removeGrocery(current);
+                return true;
             }
         }
-
-        if (!nameInList) {
-            System.out.println("\nThe grocery is not in the list...");
-        }
+        return false;
     }
 
     // MODIFIES: this
@@ -104,6 +125,7 @@ public class GroceryApp {
         String name = input.next();
 
         System.out.println("\nPlease enter the price of grocery with 2 decimals: $");
+        
         double price = input.nextDouble();
         if (price < 0) {
             System.out.println("Invalid price");
@@ -114,6 +136,7 @@ public class GroceryApp {
             System.out.println("\tgrains");
             System.out.println("\tfruits");
             System.out.println("\tothers");
+            System.out.println("\nNote: any category not listed above will count as others");
             String category = sortCategory(input.next());
 
             Grocery newGrocery = new Grocery(name, price, category);
