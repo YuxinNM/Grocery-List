@@ -40,7 +40,6 @@ public class GroceryList {
         totalPrice = 0.00;
     }
 
-    // REQUIRES: there cannot be duplicates of given grocery in the list
     // MODIFIES: this
     // EFFECTS: add a new grocery to the list,
     //          increment the corresponding counts of the category,
