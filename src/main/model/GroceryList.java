@@ -109,8 +109,6 @@ public class GroceryList {
         this.othersPerct = getOthersCount() * 100 / size;
     }
 
-
-
     public double getTotalPrice() {
         return totalPrice;
     }
