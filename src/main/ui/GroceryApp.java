@@ -50,12 +50,24 @@ public class GroceryApp {
             printPrice();
         } else if (command.equals("n")) {
             printGroupsPerct();
+        } else if (command.equals("s")) {
+            printSuggestedPerct();
         } else {
             System.out.println("Selection not valid...");
         }
     }
 
-    // EFFECTS: print the percentages of food groups of the groceries
+    // EFFECTS: print out the suggested distributions of food groups
+    private void printSuggestedPerct() {
+        System.out.println("\nSuggested Distributions of Food Groups:");
+        System.out.println("\tVegetables: 30%");
+        System.out.println("\tFruits: 10%");
+        System.out.println("\tGrains: 38%");
+        System.out.println("\tProteins: 20%");
+        System.out.println("\tOthers: 2%");
+    }
+
+    // EFFECTS: print the percentages of food groups of the groceries in the list
     private void printGroupsPerct() {
         if (groceryList.getGroceries().size() > 0) {
             groceryList.calcPercent();
@@ -70,12 +82,12 @@ public class GroceryApp {
         }
     }
 
-    // EFFECTS: print the total price of groceries
+    // EFFECTS: print the total price of groceries in the list
     private void printPrice() {
         System.out.println("\nThe total price of the groceries in the list: $" + groceryList.getTotalPrice());
     }
 
-    // EFFECTS: print the list of groceries 
+    // EFFECTS: print the list of groceries with its name & price
     private void printList() {
         if (groceryList.getGroceries().size() > 0) {
             System.out.println("\nHere is the list of groceries:");
@@ -106,6 +118,7 @@ public class GroceryApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: removes the first grocery with given name in the groceryList
     //          return true if grocery was in the list, false if cannot find it
     private boolean removeFirstInList(GroceryList groceryList, String nameToRemove) {
@@ -177,6 +190,7 @@ public class GroceryApp {
         System.out.println("\tv -> view grocery list");
         System.out.println("\tp -> view total price of groceries");
         System.out.println("\tn -> view nutritional distributions of groceries' food groups");
+        System.out.println("\ts -> view the suggested distributions of food groups");
         System.out.println("\tq -> quit");
     }
 
