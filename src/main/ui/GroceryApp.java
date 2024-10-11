@@ -79,7 +79,7 @@ public class GroceryApp {
     // EFFECTS: print the list of groceries 
     private void printList() {
         if (groceryList.getGroceries().size() > 0) {
-            System.out.println("\nHere is the list of groceries:\na");
+            System.out.println("\nHere is the list of groceries:");
             for (Grocery next: groceryList.getGroceries()) {
                 System.out.println(next.getName() + "   $" + next.getPrice() + "    " + next.getCategory());
             }
@@ -93,6 +93,8 @@ public class GroceryApp {
     private void removeGrocery() {
         if (groceryList.getGroceries().size() > 0) {
             System.out.println("\nPlease enter the name of the grocery you want to remove:");
+            System.out.println("Note: it removes one grocery at a time.");
+            System.out.println("If there are duplicates, the first one in the list will be removed.");
             String nameToRemove = input.next();
             boolean nameInList = removeFirstInList(groceryList, nameToRemove);
             if (nameInList) {
@@ -121,30 +123,39 @@ public class GroceryApp {
     // MODIFIES: this
     // EFFECTS: add a grocery to the list
     private void addGrocery() {
-        System.out.println("\nPlease enter the name of grocery:");
+        System.out.println("\nPlease enter the name of the grocery:");
         String name = input.next();
 
-        System.out.println("\nPlease enter the price of grocery with 2 decimals: $");
-        
-        double price = input.nextDouble();
-        if (price < 0) {
-            System.out.println("Invalid price");
+        System.out.println("\nPlease enter the price of the grocery with 2 decimals: $");
+        double price;
+        if (input.hasNextDouble()) {
+            price = input.nextDouble();
+            if (price < 0) {
+                System.out.println("Invalid price");
+            } else {
+                printCategories();
+                String category = sortCategory(input.next());
+    
+                Grocery newGrocery = new Grocery(name, price, category);
+                groceryList.addGrocery(newGrocery);
+    
+                System.out.println("You have successfully added the grocery!");
+            }    
         } else {
-            System.out.println("\nPlease select from one of the following categories of the grocery:");
-            System.out.println("\tvegetables");
-            System.out.println("\tproteins");
-            System.out.println("\tgrains");
-            System.out.println("\tfruits");
-            System.out.println("\tothers");
-            System.out.println("\nNote: any category not listed above will count as others");
-            String category = sortCategory(input.next());
-
-            Grocery newGrocery = new Grocery(name, price, category);
-            groceryList.addGrocery(newGrocery);
-
-            System.out.println("You have successfully added the grocery!");
+            String invalidInput = input.next();
+            System.out.println("Invalid input.");
         }
-        
+    }
+
+    // EFFECTS: helper for addGrocery(), print all grocery categories
+    private void printCategories() {
+        System.out.println("\nPlease select from one of the following categories of the grocery:");
+        System.out.println("\tvegetables");
+        System.out.println("\tproteins");
+        System.out.println("\tgrains");
+        System.out.println("\tfruits");
+        System.out.println("\tothers");
+        System.out.println("Note: any category that is not listed above will count as others.");
     }
 
     // EFFECTS: categorize the input as "others" if it is not any of the given options
