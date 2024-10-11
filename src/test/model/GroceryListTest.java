@@ -43,7 +43,6 @@ public class GroceryListTest {
     void testAddGrocery() {
         groceryListTest.addGrocery(bread);
         assertEquals(1, groceryListTest.getGroceries().size());
-        Grocery firstGrocery = groceryListTest.getGroceries().get(0);
         assertEquals(0, groceryListTest.getOthersCount());
         assertEquals(1, groceryListTest.getGrainsCount());
         assertEquals(0, groceryListTest.getVegeCount());
@@ -52,7 +51,6 @@ public class GroceryListTest {
         assertEquals(5.00, groceryListTest.getTotalPrice());
         groceryListTest.addGrocery(apples);
         assertEquals(2, groceryListTest.getGroceries().size());
-        Grocery secGrocery = groceryListTest.getGroceries().get(1);
         assertEquals(1, groceryListTest.getGrainsCount());
         assertEquals(0, groceryListTest.getVegeCount());
         assertEquals(1, groceryListTest.getFruitCount());

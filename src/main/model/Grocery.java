@@ -10,7 +10,6 @@ public class Grocery {
     //          food category would be one of the following: vegetables, fruits, 
     //          grains, proteins, and others
     // EFFECTS: create a grocery entry with given name, price and food category.
-    
     public Grocery(String name, Double price, String category) {
         this.name = name;
         this.price = price;
