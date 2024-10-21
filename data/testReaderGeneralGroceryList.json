@@ -1,0 +1,42 @@
+{
+    "groceries": [
+        {
+            "name": "apples",
+            "price": 3.50,
+            "category": "fruits"
+        },
+        {
+            "name": "carrots",
+            "price": 5.00,
+            "category": "vegetables"
+        },
+        {
+            "name": "bread",
+            "price": 5.00,
+            "category": "grains"
+        },
+        {
+            "name": "fish",
+            "price": 8.00,
+            "category": "proteins"
+        },
+        {
+            "name": "cookies",
+            "price": 6.00,
+            "category": "others"
+        }
+    ],
+    "vegeCount": 1,
+    "fruitCount": 1,
+    "grainsCount": 1,
+    "proteinCount": 1,
+    "othersCount": 1,
+
+    "vegePerct": 20.0,
+    "fruitPerct": 20.0,
+    "grainsPerct": 20.0,
+    "proteinPerct": 20.0,
+    "othersPerct": 20.0,
+
+    "totalPrice": 27.50
+}
