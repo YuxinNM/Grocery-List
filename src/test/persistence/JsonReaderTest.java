@@ -1,7 +1,6 @@
 package persistence;
 
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.Test;
 
 import model.Grocery;
 import model.GroceryList;
@@ -14,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
-public class JsonReaderTest extends JsonTest {
+class JsonReaderTest extends JsonTest {
+
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
@@ -57,8 +57,7 @@ public class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderGeneralGroceryList.json");
         try {
             GroceryList groceryList = reader.read();
-            ArrayList<Grocery> groceries = groceryList.getGroceries();
-
+            
             assertEquals(1, groceryList.getFruitCount());
             assertEquals(1, groceryList.getVegeCount());
             assertEquals(1, groceryList.getGrainsCount());
@@ -70,13 +69,17 @@ public class JsonReaderTest extends JsonTest {
             assertEquals(20.0, groceryList.getGrainsPerct());
             assertEquals(20.0, groceryList.getProteinPerct());
             assertEquals(20.0, groceryList.getOthersPerct());
-            
+
+            assertEquals(27.5, groceryList.getTotalPrice());
+
+            ArrayList<Grocery> groceries = groceryList.getGroceries();
             assertEquals(5, groceries.size());
 
-            assertEquals(35.0, groceryList.getTotalPrice());
-
-            checkThingy("needle", Category.STITCHING, thingies.get(0));
-            checkThingy("saw", Category.WOODWORK, thingies.get(1));
+            checkGrocery("apples",3.50, "fruits", groceries.get(0));
+            checkGrocery("carrots",5.00, "vegetables", groceries.get(1));
+            checkGrocery("bread",5.00, "grains", groceries.get(2));
+            checkGrocery("fish",8.00, "proteins", groceries.get(3));
+            checkGrocery("cookies",6.00, "others", groceries.get(4));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
