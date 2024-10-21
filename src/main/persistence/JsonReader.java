@@ -16,7 +16,7 @@ public class JsonReader {
         
     }
 
-    // EFFECTS: reads GroceryList (gl) from file and returns it;
+    // EFFECTS: reads GroceryList (groceryList) from file and returns it;
     //          throws IOException if an error occurs reading data from file
     public GroceryList read() throws IOException {
         return null;
@@ -33,16 +33,16 @@ public class JsonReader {
         return null;
     }
 
-    // MODIFIES: gl
+    // MODIFIES: groceryList
     // EFFECTS: helper for parseWorkRoom, parses Grocery objects from JSON object
     //          and adds them to GroceryList
-    private void addGroceries(GroceryList gl, JSONObject jsonObject) {
+    private void addGroceries(GroceryList groceryList, JSONObject jsonObject) {
 
     }
 
-    // MODIFIES: gl
+    // MODIFIES: groceryList
     // EFFECTS: helper for addGrocery, parses Grocery from JSON object and adds it to GroceryList
-    private void addGrocery(GroceryList gl, JSONObject jsonObject) {
+    private void addGrocery(GroceryList groceryList, JSONObject jsonObject) {
 
     }
 }
