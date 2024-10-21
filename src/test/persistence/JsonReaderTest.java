@@ -64,6 +64,7 @@ class JsonReaderTest extends JsonTest {
             assertEquals(1, groceryList.getProteinCount());
             assertEquals(1, groceryList.getOthersCount());
 
+            groceryList.calcPercent();
             assertEquals(20.0, groceryList.getFruitPerct());
             assertEquals(20.0, groceryList.getVegePerct());
             assertEquals(20.0, groceryList.getGrainsPerct());
