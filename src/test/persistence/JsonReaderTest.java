@@ -1,10 +1,13 @@
 package persistence;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import model.Grocery;
 import model.GroceryList;
 
 import java.io.IOException;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,30 +22,59 @@ public class JsonReaderTest extends JsonTest {
             GroceryList groceryList = reader.read();
             fail("IOException expected");
         } catch (IOException e) {
-            // pass
+            // exception thrown as expected
         }
     }
 
     @Test
-    void testReaderEmptyWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
+    void testReaderEmptyGroceryList() {
+        JsonReader reader = new JsonReader("./data/testReaderEmptyGroceryList.json");
         try {
-            WorkRoom wr = reader.read();
-            assertEquals("My work room", wr.getName());
-            assertEquals(0, wr.numThingies());
+            GroceryList groceryList  = reader.read();
+
+            assertEquals(0, groceryList.getFruitCount());
+            assertEquals(0, groceryList.getVegeCount());
+            assertEquals(0, groceryList.getGrainsCount());
+            assertEquals(0, groceryList.getProteinCount());
+            assertEquals(0, groceryList.getOthersCount());
+
+            assertEquals(0.0, groceryList.getFruitPerct());
+            assertEquals(0.0, groceryList.getVegePerct());
+            assertEquals(0.0, groceryList.getGrainsPerct());
+            assertEquals(0.0, groceryList.getProteinPerct());
+            assertEquals(0.0, groceryList.getOthersPerct());
+            
+            assertEquals(0, groceryList.getGroceries().size());
+
+            assertEquals(0.0, groceryList.getTotalPrice());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
     }
 
     @Test
-    void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+    void testReaderGeneralGroceryList() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralGroceryList.json");
         try {
-            WorkRoom wr = reader.read();
-            assertEquals("My work room", wr.getName());
-            List<Thingy> thingies = wr.getThingies();
-            assertEquals(2, thingies.size());
+            GroceryList groceryList = reader.read();
+            ArrayList<Grocery> groceries = groceryList.getGroceries();
+
+            assertEquals(1, groceryList.getFruitCount());
+            assertEquals(1, groceryList.getVegeCount());
+            assertEquals(1, groceryList.getGrainsCount());
+            assertEquals(1, groceryList.getProteinCount());
+            assertEquals(1, groceryList.getOthersCount());
+
+            assertEquals(20.0, groceryList.getFruitPerct());
+            assertEquals(20.0, groceryList.getVegePerct());
+            assertEquals(20.0, groceryList.getGrainsPerct());
+            assertEquals(20.0, groceryList.getProteinPerct());
+            assertEquals(20.0, groceryList.getOthersPerct());
+            
+            assertEquals(5, groceries.size());
+
+            assertEquals(35.0, groceryList.getTotalPrice());
+
             checkThingy("needle", Category.STITCHING, thingies.get(0));
             checkThingy("saw", Category.WOODWORK, thingies.get(1));
         } catch (IOException e) {
