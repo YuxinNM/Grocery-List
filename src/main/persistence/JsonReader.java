@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.json.JSONObject;
 
-import model.Grocery;
 import model.GroceryList;
 
 // Referenced from the JsonSerialization Demo
