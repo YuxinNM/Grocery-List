@@ -1,15 +1,3 @@
 {
-    "vegeCount": 0,
-    "fruitCount": 0,
-    "grainsCount": 0,
-    "proteinCount": 0,
-    "othersCount": 0,
-    "groceries" : [],
-    "vegePerct": 0.0,
-    "fruitPerct": 0.0,
-    "grainsPerct": 0.0,
-    "proteinPerct": 0.0,
-    "othersPerct": 0.0,
-
-    "totalPrice": 0.00
+    "groceries" : []
 }
