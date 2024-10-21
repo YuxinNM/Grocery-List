@@ -27,6 +27,8 @@ I started grocery shopping recently. As a huge planner, I like writing my grocer
 - As a user, I want to be able to add a grocery item with its name, price, and category to my grocery list. 
 - As a user, I want to be able to view a list of the names and the prices of the items in my grocery list.
 - As a user, I want to be able to remove a grocery item from my list.
-- As a user, I want to be able to know the total amount of expense of my grocery list
-- As a user, I want to view the pie chart displaying the distribution of the food groups based on my items
+- As a user, I want to be able to know the total amount of expense of my grocery list.
+- As a user, I want to view the pie chart displaying the distribution of the food groups based on my items.
 - As a user, I want to view the pie chart of the recommended distribution of the good groups
+- As a user, when I select the quit option from the application menu, I want to be reminded to save my to-do list to file and have the option to do so or not.
+- As a user, when I start the application, I want to be given the option to load my to-do list from file.

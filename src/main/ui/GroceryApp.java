@@ -33,7 +33,7 @@ public class GroceryApp {
                 processCommand(command);
             }
         }
-
+        
         System.out.println("\nGoodbye!");
     }
 
@@ -154,7 +154,7 @@ public class GroceryApp {
                 System.out.println("You have successfully added the grocery!");
             }    
         } else {
-            String invalidInput = input.next();
+            input.next();
             System.out.println("Invalid input.");
         }
     }
