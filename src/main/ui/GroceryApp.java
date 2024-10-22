@@ -69,7 +69,8 @@ public class GroceryApp {
         }
     }
 
-    // EFFECTS: save grocerylist and print a messages to tell whether it is saved
+    // EFFECTS: helper for saveGroceryList(), 
+    //          save grocerylist and print a messages to tell whether it is saved
     private boolean saveFile(String command) {
         if (command.equals("y")) {
             try {
@@ -91,7 +92,8 @@ public class GroceryApp {
         }
     }
 
-    // EFFECTS: load the grocerylist from file and print messages to tell whether it is loaded
+    // EFFECTS: helper for loadGroceryList(),
+    //          load the grocerylist from file and print messages to tell whether it is loaded
     private boolean loadFile(String command) {
         if (command.equals("y")) {
             try {
@@ -112,11 +114,13 @@ public class GroceryApp {
         }
     }
 
+    // EFFECTS: helper function for saveGroceryList, ask whether to save the grocery list 
     private void askSave() {
         System.out.println("Do you want to save the grocery list?");
         System.out.println("\ty -> yes\tn -> no");
     }
 
+    // EFFECTS: helper function for loadGroceryList, ask whether to load the grocery list 
     private void askLoad() {
         System.out.println("Do you want to load your saved grocery list?");
         System.out.println("\ty -> yes\tn -> no");
