@@ -1,0 +1,27 @@
+{"groceries": [
+    {
+        "price": 3.5,
+        "name": "apples",
+        "category": "fruits"
+    },
+    {
+        "price": 5,
+        "name": "carrots",
+        "category": "vegetables"
+    },
+    {
+        "price": 5,
+        "name": "bread",
+        "category": "grains"
+    },
+    {
+        "price": 8,
+        "name": "fish",
+        "category": "proteins"
+    },
+    {
+        "price": 6,
+        "name": "cookies",
+        "category": "others"
+    }
+]}
