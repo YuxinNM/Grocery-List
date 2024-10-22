@@ -4,10 +4,18 @@ import java.util.Scanner;
 
 import model.Grocery;
 import model.GroceryList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class GroceryApp {
+    private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private GroceryList groceryList;
     private Scanner input;
+    JsonWriter jsonWriter;
+    JsonReader jsonReader;
 
     // EFFECTS: runs the console 
     public GroceryApp() {
@@ -22,12 +30,14 @@ public class GroceryApp {
 
         init();
 
+        loadGroceryList();
+
         while (keepGoing) {
             displayMenu();
             command = input.next();
             command = command.toLowerCase();
-
             if (command.equals("q")) {
+                saveGroceryList();
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -35,6 +45,81 @@ public class GroceryApp {
         }
         
         System.out.println("\nGoodbye!");
+    }
+
+    // EFFECTS: save grocery list if user indicates so, ask again if user input is invalid
+    private void saveGroceryList() {
+        boolean keepGoingSave = true;
+        while (keepGoingSave) {
+            askSave();
+            String command = input.next();
+            command = command.toLowerCase();
+            keepGoingSave = saveFile(command); 
+        }
+    }
+
+    // EFFECTS: load grocery list if user indicates so, ask again if user input is invalid
+    private void loadGroceryList() {
+        boolean keepGoingLoad = true;
+        while (keepGoingLoad) {
+            askLoad();
+            String command = input.next();
+            command = command.toLowerCase();
+            keepGoingLoad = loadFile(command);
+        }
+    }
+
+    // EFFECTS: save grocerylist and print a messages to tell whether it is saved
+    private boolean saveFile(String command) {
+        if (command.equals("y")) {
+            try {
+                jsonWriter.open();
+                jsonWriter.write(groceryList);
+                jsonWriter.close();
+                System.out.println("\nYour grocery list has been successfully saved to " + JSON_DESTINATION);
+                return false;
+            } catch (FileNotFoundException e) {
+                System.out.println("\nUnable to write to file " + JSON_DESTINATION);
+                return false;
+            }
+        } else if (command.equals("n")) {
+            System.out.println("\nGrocery list is not saved this time.");
+            return false;
+        } else {
+            System.out.println("Selection not valid...");
+            return true;
+        }
+    }
+
+    // EFFECTS: load the grocerylist from file and print messages to tell whether it is loaded
+    private boolean loadFile(String command) {
+        if (command.equals("y")) {
+            try {
+                groceryList = jsonReader.read();
+                System.out.println("\nYour grocery list has been successfully loaded from " + JSON_DESTINATION);
+                return false;
+            } catch (IOException e) {
+                System.out.println("\nUnable to read from file " + JSON_DESTINATION);
+                System.out.println("\nLet's work with a new grocery list instead.");
+                return false;
+            }
+        } else if (command.equals("n")) {
+            System.out.println("\nYou will create a new grocery list.");
+            return false;
+        } else {
+            System.out.println("Selection not valid...");
+            return true;
+        }
+    }
+
+    private void askSave() {
+        System.out.println("Do you want to save the grocery list?");
+        System.out.println("\ty -> yes\tn -> no");
+    }
+
+    private void askLoad() {
+        System.out.println("Do you want to load your saved grocery list?");
+        System.out.println("\ty -> yes\tn -> no");
     }
 
     // MODIFIES: this
@@ -200,5 +285,7 @@ public class GroceryApp {
         groceryList = new GroceryList(); 
         input = new Scanner(System.in);
         input.useDelimiter("\r?\n|\r");
+        jsonWriter = new JsonWriter(JSON_DESTINATION);
+        jsonReader = new JsonReader(JSON_DESTINATION);
     }
 }
