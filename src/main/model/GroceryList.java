@@ -2,7 +2,13 @@ package model;
 
 import java.util.*;
 
-public class GroceryList {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
+// Represents a grocery list
+public class GroceryList implements Writable {
     private ArrayList<Grocery> groceries;
     private int vegeCount;
     private int fruitCount;
@@ -107,6 +113,24 @@ public class GroceryList {
         this.grainsPerct = getGrainsCount() * 100 / size;
         this.proteinPerct = getProteinCount() * 100 / size;
         this.othersPerct = getOthersCount() * 100 / size;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("groceries", groceriesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns groceries in this groceryList as a JSON array
+    private JSONArray groceriesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Grocery grocery : groceries) {
+            jsonArray.put(grocery.toJson());
+        }
+
+        return jsonArray;
     }
 
     public double getTotalPrice() {

@@ -29,19 +29,19 @@ public class JsonWriter {
     // MODIFIES: this
     // EFFECTS: writes JSON representation of groceryList to file
     public void write(GroceryList groceryList) {
-        JSONObject json = groceryList.toJason();
+        JSONObject json = groceryList.toJson();
         saveToFile(json.toString(TAB)); 
     }
 
     // MODIFIES: this
     // EFFECTS: closes writer
     public void close() {
-
+        writer.close();
     }
 
     // MODIFIES: this
     // EFFECTS: writes string to file
     private void saveToFile(String json) {
-
+        writer.print(json);
     }
 }

@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a grocery with its name, price (in dollars), and food category
-public class Grocery {
+public class Grocery implements Writable {
     private String name;
     private Double price;
     private String category;
@@ -47,5 +51,14 @@ public class Grocery {
 
     public String getCategory() {
         return this.category;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("price", price);
+        json.put("category", category);
+        return json;
     }
 }
