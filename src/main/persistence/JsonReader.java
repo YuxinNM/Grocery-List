@@ -50,8 +50,8 @@ public class JsonReader {
     }
 
     // MODIFIES: groceryList
-    // EFFECTS: helper for parseWorkRoom, parses Grocery objects from JSON object
-    //          and adds them to GroceryList
+    // EFFECTS: helper for parseGroceryList, parses Grocery objects from JSON object
+    //          and adds them to groceryList
     private void addGroceries(GroceryList groceryList, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("groceries");
         for (Object json : jsonArray) {
@@ -61,7 +61,7 @@ public class JsonReader {
     }
 
     // MODIFIES: groceryList
-    // EFFECTS: helper for addGrocery, parses Grocery from JSON object and adds it to GroceryList
+    // EFFECTS: helper for addGroceries, parses Grocery from JSON object and adds it to groceryList
     private void addGrocery(GroceryList groceryList, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         double price = jsonObject.getDouble("price");
