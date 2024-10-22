@@ -62,10 +62,10 @@ public class JsonReader {
 
     // MODIFIES: groceryList
     // EFFECTS: helper for addGroceries, parses Grocery from JSON object and adds it to groceryList
-    private void addGrocery(GroceryList groceryList, JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
-        double price = jsonObject.getDouble("price");
-        String category = jsonObject.getString("category");
+    private void addGrocery(GroceryList groceryList, JSONObject nextGrocery) {
+        String name = nextGrocery.getString("name");
+        double price = nextGrocery.getDouble("price");
+        String category = nextGrocery.getString("category");
         Grocery grocery = new Grocery(name, price, category);
         groceryList.addGrocery(grocery);
     }
