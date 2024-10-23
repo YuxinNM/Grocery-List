@@ -37,11 +37,8 @@ public class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyGroceryList.json");
             groceryList = reader.read();
-            assertEquals(0, groceryList.getFruitCount());
-            assertEquals(0, groceryList.getVegeCount());
-            assertEquals(0, groceryList.getGrainsCount());
-            assertEquals(0, groceryList.getProteinCount());
-            assertEquals(0, groceryList.getOthersCount());
+
+            testEmptyGroceryListCounts(groceryList);
             
             assertEquals(0.0, groceryList.getFruitPerct());
             assertEquals(0.0, groceryList.getVegePerct());
@@ -60,6 +57,15 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
+    private void testEmptyGroceryListCounts(GroceryList groceryList) {
+        assertEquals(0, groceryList.getFruitCount());
+        assertEquals(0, groceryList.getVegeCount());
+        assertEquals(0, groceryList.getGrainsCount());
+        assertEquals(0, groceryList.getProteinCount());
+        assertEquals(0, groceryList.getOthersCount());
+    }
+
+    @Test
     void testWriterGeneralGroceryList() {
         try {
             GroceryList groceryList = new GroceryList();
@@ -75,34 +81,48 @@ public class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralGroceryList.json");
             groceryList = reader.read();
-            
-            assertEquals(1, groceryList.getFruitCount());
-            assertEquals(1, groceryList.getVegeCount());
-            assertEquals(1, groceryList.getGrainsCount());
-            assertEquals(1, groceryList.getProteinCount());
-            assertEquals(1, groceryList.getOthersCount());
 
-            groceryList.calcPercent();
-            assertEquals(20.0, groceryList.getFruitPerct());
-            assertEquals(20.0, groceryList.getVegePerct());
-            assertEquals(20.0, groceryList.getGrainsPerct());
-            assertEquals(20.0, groceryList.getProteinPerct());
-            assertEquals(20.0, groceryList.getOthersPerct());
+            testGeneralGroceryListCounts(groceryList);
+            
+            testGeneralGroceryListPerct(groceryList);
 
             assertEquals(27.5, groceryList.getTotalPrice());
 
             ArrayList<Grocery> groceries = groceryList.getGroceries();
-            assertEquals(5, groceries.size());
-
-            checkGrocery("apples",3.50, "fruits", groceries.get(0));
-            checkGrocery("carrots",5.00, "vegetables", groceries.get(1));
-            checkGrocery("bread",5.00, "grains", groceries.get(2));
-            checkGrocery("fish",8.00, "proteins", groceries.get(3));
-            checkGrocery("cookies",6.00, "others", groceries.get(4));
+            testGeneralGroceries(groceries);
         } catch (FileNotFoundException e) {
             fail("FileNotFoundException is not expected");
         } catch (IOException e) {
             fail("Cannot read the file");
         }
+    }
+
+    @Test 
+    private void testGeneralGroceries(ArrayList<Grocery> groceries) {
+        assertEquals(5, groceries.size());
+        checkGrocery("apples",3.50, "fruits", groceries.get(0));
+        checkGrocery("carrots",5.00, "vegetables", groceries.get(1));
+        checkGrocery("bread",5.00, "grains", groceries.get(2));
+        checkGrocery("fish",8.00, "proteins", groceries.get(3));
+        checkGrocery("cookies",6.00, "others", groceries.get(4));
+    }
+
+    @Test 
+    private void testGeneralGroceryListPerct(GroceryList groceryList) {
+        groceryList.calcPercent();
+        assertEquals(20.0, groceryList.getFruitPerct());
+        assertEquals(20.0, groceryList.getVegePerct());
+        assertEquals(20.0, groceryList.getGrainsPerct());
+        assertEquals(20.0, groceryList.getProteinPerct());
+        assertEquals(20.0, groceryList.getOthersPerct());
+    }
+
+    @Test
+    private void testGeneralGroceryListCounts(GroceryList groceryList) {
+        assertEquals(1, groceryList.getFruitCount());
+        assertEquals(1, groceryList.getVegeCount());
+        assertEquals(1, groceryList.getGrainsCount());
+        assertEquals(1, groceryList.getProteinCount());
+        assertEquals(1, groceryList.getOthersCount());
     }
 }

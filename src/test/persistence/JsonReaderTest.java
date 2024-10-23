@@ -19,7 +19,7 @@ class JsonReaderTest extends JsonTest {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            GroceryList groceryList = reader.read();
+            reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // exception thrown as expected
@@ -57,12 +57,8 @@ class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderGeneralGroceryList.json");
         try {
             GroceryList groceryList = reader.read();
-            
-            assertEquals(1, groceryList.getFruitCount());
-            assertEquals(1, groceryList.getVegeCount());
-            assertEquals(1, groceryList.getGrainsCount());
-            assertEquals(1, groceryList.getProteinCount());
-            assertEquals(1, groceryList.getOthersCount());
+
+            testGroceryListCounts(groceryList);
 
             groceryList.calcPercent();
             assertEquals(20.0, groceryList.getFruitPerct());
@@ -84,5 +80,14 @@ class JsonReaderTest extends JsonTest {
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
+    }
+
+    @Test
+    private void testGroceryListCounts(GroceryList groceryList) {
+        assertEquals(1, groceryList.getFruitCount());
+        assertEquals(1, groceryList.getVegeCount());
+        assertEquals(1, groceryList.getGrainsCount());
+        assertEquals(1, groceryList.getProteinCount());
+        assertEquals(1, groceryList.getOthersCount());
     }
 }
