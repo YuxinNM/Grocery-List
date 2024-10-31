@@ -10,6 +10,7 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// An app that will run groceryList app on the terminal
 public class GroceryApp {
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private GroceryList groceryList;
