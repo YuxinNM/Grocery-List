@@ -14,6 +14,7 @@ import model.Grocery;
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
+// Read grocery list saved as json file
 public class JsonReader {
     private String source;
 

@@ -2,10 +2,10 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+// Test Grocery() class
 public class GroceryTest {
     private Grocery groceryTest;
 

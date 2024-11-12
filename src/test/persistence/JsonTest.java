@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import model.Grocery;
 
+// Can be extended to test JsonReader() and JsonWriter()
 public class JsonTest {
     protected void checkGrocery(String name, double price, String category, Grocery grocery) {
         assertEquals(name, grocery.getName());

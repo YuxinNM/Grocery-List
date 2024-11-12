@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
+// Test GroceryList() class
 public class GroceryListTest {
     private GroceryList groceryListTest;
     private Grocery bread;
