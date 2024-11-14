@@ -25,6 +25,7 @@ public class GraphicalGroceryApp implements ActionListener{
     private JMenuItem removeGrocery;
     private JMenuItem calcTotalPrice;
     private JMenuItem viewNutrition;
+    private JMenuItem viewGroceries;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -48,15 +49,16 @@ public class GraphicalGroceryApp implements ActionListener{
         removeGrocery = new JMenuItem("Remove grocery item");
         calcTotalPrice = new JMenuItem("Calculate total price");
         viewNutrition = new JMenuItem("View nutritional report");
-        
+        viewGroceries = new JMenuItem("View groceries");
+
         menuBar.add(analyze);
         menuBar.add(saveFile);
 
         analyze.add(addGrocery);
         analyze.add(removeGrocery);
         analyze.add(calcTotalPrice);
-        analyze.add(calcTotalPrice);
         analyze.add(viewNutrition);
+        analyze.add(viewGroceries);
     }
 
     //EFFECTS: setup the window
@@ -103,5 +105,42 @@ public class GraphicalGroceryApp implements ActionListener{
     // EFFECTS: acts upon selections of the menu items as their name indicates
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == addGrocery) {
+            addGroceryPanel();
+        } else if (e.getSource() == calcTotalPrice) {
+            displayTotalPrice();
+        } else if (e.getSource() == removeGrocery) {
+            removeGroceryPanel();
+        } else if (e.getSource() == viewNutrition) {
+            displayNutrition();
+        } else if (e.getSource() == viewGroceries) {
+            displayFrame();
+        } else if (e.getSource() == saveFile) {
+            saveFile();
+        }
+
+
     }
+
+    // EFFECTS: saves the file to a Json object to the destination
+    private void saveFile() {
+    }
+
+    // EFFECTS: panel that displays the nutrition distribution by a pie chart
+    private void displayNutrition() {
+    }
+
+    // EFFECTS: panel that allows removing a grocery item
+    private void removeGroceryPanel() {
+    }
+
+    // EFFECTS: panel that allows adding a grocery item
+    private void addGroceryPanel() {
+    }
+
+    // EFFECTS: get total price of the groceryList and display it on a JPanel
+    private void displayTotalPrice() {
+    }
+
+    
 }
