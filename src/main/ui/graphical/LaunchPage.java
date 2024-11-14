@@ -1,5 +1,5 @@
 
-package ui.GUI;
+package ui.graphical;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -13,13 +13,13 @@ import model.GroceryList;
 import persistence.JsonReader;
 
 // A launch window that asks user to laod saved file
-public class LaunchPage implements ActionListener{
+public class LaunchPage implements ActionListener {
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
+    private GroceryList groceryList;
+    private JsonReader jsonReader;
     JFrame loadFileFrame = new JFrame();
     MessageButton loadButton = new MessageButton("Load Previous Grocery List");
     MessageButton notLoadButton = new MessageButton("Not Load Previous Grocery List");
-    private GroceryList groceryList;
-    private JsonReader jsonReader;
 
     // EFFECTS: a window that asks user to choose one of two buttons to load or 
     //          not load saved grocery list, leads to a new window with the given choice

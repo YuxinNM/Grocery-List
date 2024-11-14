@@ -1,4 +1,4 @@
-package ui.GUI;
+package ui.graphical;
 
 import javax.swing.*;
 
@@ -14,7 +14,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 // Creates the GUI panel of the grocery list app 
-public class GraphicalGroceryApp implements ActionListener{
+public class GraphicalGroceryApp implements ActionListener {
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private JFrame groceryFrame;
     private SubPanel viewListPanel;
@@ -105,7 +105,7 @@ public class GraphicalGroceryApp implements ActionListener{
     // EFFECTS: add grocery buttons to the viewListPanel if applicable,
     //          add button indicating empty grocery list if needed.
     public void addGroceryButtons() {
-         if (groceryList.getGroceries().size() > 0) {
+        if (groceryList.getGroceries().size() > 0) {
             for (Grocery next: groceryList.getGroceries()) {
                 GroceryButton groceryButton = new GroceryButton(next.getName(), next.getPrice(), next.getCategory());
                 viewListPanel.add(groceryButton);
@@ -141,7 +141,8 @@ public class GraphicalGroceryApp implements ActionListener{
             jsonWriter.write(groceryList);
             jsonWriter.close();
             SubPanel saveSuccessPanel = new SubPanel();    
-            MessageButton saveSuccessButton = new MessageButton("Your grocery list has been successfully saved to " + JSON_DESTINATION);
+            MessageButton saveSuccessButton = new MessageButton("Your grocery list has been successfully saved to " 
+                                                                + JSON_DESTINATION);
             mainPanel.removeAll();
             saveSuccessPanel.add(saveSuccessButton);
             mainPanel.add(saveSuccessPanel);
@@ -155,7 +156,7 @@ public class GraphicalGroceryApp implements ActionListener{
             mainPanel.add(saveFailPanel);
             groceryFrame.add(mainPanel);
             groceryFrame.pack();
-         }
+        }
     }
 
     // EFFECTS: panel that displays the nutrition distribution by a pie chart

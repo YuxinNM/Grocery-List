@@ -1,15 +1,15 @@
-package ui.GUI;
+package ui.graphical;
 
 import javax.swing.*;
 import java.awt.*;
 
 // Creates the button for the grocery items
 public class GroceryButton extends JButton {
-    private final Color VEGECOLOR = new Color(152,200,152);
-    private final Color FRUITCOLOR = new Color(255,228,225);
-    private final Color PROTEINCOLOR = new Color(240,255,255);
-    private final Color GRAINCOLOR = new Color(245,222,179);
-    private final Color OTHERSCOLOR = new Color(216,191,216);
+    private static final Color VEGE_COLOR = new Color(152,200,152);
+    private static final Color FRUIT_COLOR = new Color(255,228,225);
+    private static final Color PROTEIN_COLOR = new Color(240,255,255);
+    private static final Color GRAIN_COLOR = new Color(245,222,179);
+    private static final Color OTHERS_COLOR = new Color(216,191,216);
     private String content;
     private double price;
 
@@ -27,15 +27,15 @@ public class GroceryButton extends JButton {
     private void setCategoryColor(String category) {
         Color color;
         if (category.equals("vegetables")) {
-            color = VEGECOLOR;
+            color = VEGE_COLOR;
         } else if (category.equals("fruits")) {
-            color = FRUITCOLOR;
+            color = FRUIT_COLOR;
         } else if (category.equals("grains")) {
-            color = GRAINCOLOR;
+            color = GRAIN_COLOR;
         } else if (category.equals("proteins")) {
-            color = PROTEINCOLOR;
+            color = PROTEIN_COLOR;
         } else {
-            color = OTHERSCOLOR;
+            color = OTHERS_COLOR;
         }
         this.setBackground(color);
         this.setOpaque(true);

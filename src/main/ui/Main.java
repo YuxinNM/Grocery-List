@@ -1,6 +1,6 @@
 package ui;
 
-import ui.GUI.LaunchPage;
+import ui.graphical.LaunchPage;
 
 // Runs the LaunchPage() and GroceryApp() 
 public class Main {
