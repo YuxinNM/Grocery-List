@@ -58,11 +58,7 @@ public class GraphicalGroceryApp implements ActionListener{
         viewNutrition = new JMenuItem("View nutritional report");
         viewGroceries = new JMenuItem("View groceries");
         saveFile = new JMenuItem("Save file");
-
-        saveFile.addActionListener(this);
-        viewNutrition.addActionListener(this);
-        removeGrocery.addActionListener(this);
-        
+ 
         menuBar.add(analyze);
         menuBar.add(saveFile);
 
@@ -71,6 +67,17 @@ public class GraphicalGroceryApp implements ActionListener{
         analyze.add(calcTotalPrice);
         analyze.add(viewNutrition);
         analyze.add(viewGroceries);
+        addActionListenerToMenu();
+    }
+
+    //EFFECTS: addActionListener to the JMenuItems
+    private void addActionListenerToMenu() {
+        addGrocery.addActionListener(this);
+        removeGrocery.addActionListener(this);
+        calcTotalPrice.addActionListener(this);
+        viewNutrition.addActionListener(this);
+        viewGroceries.addActionListener(this);
+        saveFile.addActionListener(this);
     }
 
     //EFFECTS: setup the window
