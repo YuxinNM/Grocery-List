@@ -5,7 +5,7 @@ import java.awt.*;
 
 // Creates the button for the grocery items
 public class GroceryButton extends JButton {
-    private final Color VEGECOLOR = new Color(240,255,240);
+    private final Color VEGECOLOR = new Color(152,200,152);
     private final Color FRUITCOLOR = new Color(255,228,225);
     private final Color PROTEINCOLOR = new Color(240,255,255);
     private final Color GRAINCOLOR = new Color(245,222,179);
@@ -16,11 +16,11 @@ public class GroceryButton extends JButton {
     // EFFECTS: creates a button for a grocery item with its name, price
     //          and background color corresponding to its category
     public GroceryButton(String name, double price, String category) {
-        this.setPreferredSize(new Dimension(60,15));
-        this.setFont(new Font("Ariel", Font.PLAIN, 12));
-        this.setText(name);
+        this.setFont(new Font("Comics", Font.BOLD, 15));
         this.price = price;
+        this.setText(name);
         this.setCategoryColor(category);
+        this.setFocusable(false);        
     }
 
     // EFFECTS: sets the button color according to the category
@@ -44,7 +44,7 @@ public class GroceryButton extends JButton {
     // EFFECTS: the button will display the name and price of the grocery
     @Override
     public void setText(String text) {
-        content = text + " $" + price;
-        super.setText(content);
+        this.content = text + " $" + this.price;
+        super.setText(this.content);
     }
 }
