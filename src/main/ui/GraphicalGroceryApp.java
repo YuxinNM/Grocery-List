@@ -30,21 +30,15 @@ public class GraphicalGroceryApp {
         viewListPanel.setBackground(new Color(224,255,255));
         viewListPanel.setLayout(new GridLayout(0, 1, 0, 3));
 
-        // just examples to test buttons: need to add groceries in the list instead
-        viewListPanel.setSize(new Dimension(60, 500));
-        GroceryButton exbutton = new GroceryButton("apple", 3.00, "fruits");
-        viewListPanel.add(exbutton);
-        GroceryButton ex2button = new GroceryButton("milk", 7.00, "proteins");
-        viewListPanel.add(ex2button);
-        GroceryButton ex3button = new GroceryButton("cookie", 6.00, "others");
-        viewListPanel.add(ex3button);
-        GroceryButton ex4button = new GroceryButton("lettuce", 6.00, "vegetables");
-        viewListPanel.add(ex4button);
-        GroceryButton ex5button = new GroceryButton("bread", 4.00, "grains");
-        viewListPanel.add(ex5button);
+        addGroceryButtons();
 
         viewListPanel.setVisible(true);
         groceryFrame.add(viewListPanel, BorderLayout.CENTER);
     }
 
+    // EFFECTS: add grocery buttons to the viewListPanel if applicable,
+    //          add button indicating empty grocery list if needed.
+    public void addGroceryButtons() {
+
+    }
 }
