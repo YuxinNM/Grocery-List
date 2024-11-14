@@ -17,7 +17,7 @@ import persistence.JsonWriter;
 public class GraphicalGroceryApp implements ActionListener{
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private JFrame groceryFrame;
-    private JPanel viewListPanel;
+    private SubPanel viewListPanel;
     private JPanel mainPanel;
 
     private GroceryList groceryList;
@@ -97,13 +97,8 @@ public class GraphicalGroceryApp implements ActionListener{
 
     // EFFECTS: add a panel that allows viewing grocery list
     public void viewListPanel() {
-        viewListPanel = new JPanel();
-        viewListPanel.setBackground(new Color(224,255,255));
-        viewListPanel.setLayout(new GridLayout(0, 1, 0, 3));
-
+        viewListPanel = new SubPanel();
         addGroceryButtons();
-
-        viewListPanel.setVisible(true);
         mainPanel.add(viewListPanel);
     }
 
@@ -145,7 +140,7 @@ public class GraphicalGroceryApp implements ActionListener{
             jsonWriter.open();
             jsonWriter.write(groceryList);
             jsonWriter.close();
-            JPanel saveSuccessPanel = new JPanel();    
+            SubPanel saveSuccessPanel = new SubPanel();    
             MessageButton saveSuccessButton = new MessageButton("Your grocery list has been successfully saved to " + JSON_DESTINATION);
             mainPanel.removeAll();
             saveSuccessPanel.add(saveSuccessButton);
@@ -153,7 +148,7 @@ public class GraphicalGroceryApp implements ActionListener{
             groceryFrame.add(mainPanel);
             groceryFrame.pack();
         } catch (FileNotFoundException e) {
-            JPanel saveFailPanel = new JPanel();    
+            SubPanel saveFailPanel = new SubPanel();    
             MessageButton errorButton = new MessageButton("Unable to save file to" + JSON_DESTINATION);
             saveFailPanel.add(errorButton);
             mainPanel.removeAll();
@@ -170,7 +165,7 @@ public class GraphicalGroceryApp implements ActionListener{
 
     // EFFECTS: panel that allows removing a grocery item
     private void removeGroceryPanel() {
-        JPanel removeSuccessPanel = new JPanel();    
+        SubPanel removeSuccessPanel = new SubPanel();    
         MessageButton removeSuccessButton = new MessageButton("Your grocery has been removed");
         removeSuccessPanel.add(removeSuccessButton);
         mainPanel.removeAll();

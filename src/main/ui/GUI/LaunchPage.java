@@ -16,8 +16,8 @@ import persistence.JsonReader;
 public class LaunchPage implements ActionListener{
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
     JFrame loadFileFrame = new JFrame();
-    JButton loadButton = new JButton("Load Previous Grocery List");
-    JButton notLoadButton = new JButton("Not Load Previous Grocery List");
+    MessageButton loadButton = new MessageButton("Load Previous Grocery List");
+    MessageButton notLoadButton = new MessageButton("Not Load Previous Grocery List");
     private GroceryList groceryList;
     private JsonReader jsonReader;
 
@@ -42,8 +42,6 @@ public class LaunchPage implements ActionListener{
 
     // EFFECTS: sets up a JButton
     public void setUpButton(JButton button) {
-        button.setSize(200, 250);
-        button.setFocusable(false);
         button.addActionListener(this);
     }
 
