@@ -16,6 +16,7 @@ public class GraphicalGroceryApp {
     private JFrame groceryFrame;
     private JPanel viewListPanel;
     private GroceryList groceryList;
+    private JMenuBar menuBar;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -23,8 +24,15 @@ public class GraphicalGroceryApp {
     //          displays the grocery list
     public GraphicalGroceryApp(GroceryList groceryList) {
         this.groceryList = groceryList;
+        menuBar = new JMenuBar();
         displayFrame();
-        
+        displayMenu();
+    }
+
+    // EFFECTS: display menu with menu items: add new grocery item,
+    //          remove grocery item, calculates the total price, 
+    //          view nutritional report, save list
+    private void displayMenu() {
     }
 
     //EFFECTS: setup the window
