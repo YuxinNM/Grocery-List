@@ -12,7 +12,6 @@ public class GroceryButton extends JButton {
     private final Color OTHERSCOLOR = new Color(216,191,216);
     private String content;
     private int price;
-    private String category;
 
     // EFFECTS: creates a button for a grocery item with its name, price
     //          and background color corresponding to its category
@@ -21,15 +20,24 @@ public class GroceryButton extends JButton {
         this.setFont(new Font("Arial", Font.BOLD, 10));
         this.setText(name);
         this.price = price;
-        this.category = category;
         this.setCategoryColor(category);
     }
 
-    // REQUIRES: category should be one of the followings: 
-    //           vegetables, fruits, protein, grains, others
     // EFFECTS: sets the button color according to the category
     private void setCategoryColor(String category) {
-        //stub
+        Color color;
+        if (category.equals("vegetables")) {
+            color = VEGECOLOR;
+        } else if (category.equals("fruits")) {
+            color = FRUITCOLOR;
+        } else if (category.equals("grains")) {
+            color = GRAINCOLOR;
+        } else if (category.equals("proteins")) {
+            color = PROTEINCOLOR;
+        } else {
+            color = OTHERSCOLOR;
+        }
+        this.setBackground(color);
     }
 
     // EFFECTS: the button will display the name and price of the grocery
