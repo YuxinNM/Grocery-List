@@ -11,13 +11,13 @@ public class GroceryButton extends JButton {
     private final Color GRAINCOLOR = new Color(245,222,179);
     private final Color OTHERSCOLOR = new Color(216,191,216);
     private String content;
-    private int price;
+    private double price;
 
     // EFFECTS: creates a button for a grocery item with its name, price
     //          and background color corresponding to its category
-    public GroceryButton(String name, int price, String category) {
-        this.setPreferredSize(new Dimension(25,15));
-        this.setFont(new Font("Arial", Font.BOLD, 10));
+    public GroceryButton(String name, double price, String category) {
+        this.setPreferredSize(new Dimension(60,15));
+        this.setFont(new Font("Ariel", Font.PLAIN, 12));
         this.setText(name);
         this.price = price;
         this.setCategoryColor(category);
@@ -38,12 +38,13 @@ public class GroceryButton extends JButton {
             color = OTHERSCOLOR;
         }
         this.setBackground(color);
+        this.setOpaque(true);
     }
 
     // EFFECTS: the button will display the name and price of the grocery
     @Override
     public void setText(String text) {
-        content = text + " $ " + price;
+        content = text + " $" + price;
         super.setText(content);
     }
 }
