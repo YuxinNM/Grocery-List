@@ -61,9 +61,9 @@ public class LaunchPage implements ActionListener{
                 JButton errorButton = new JButton("Unable to read from file" + JSON_DESTINATION);
                 setUpButton(errorButton);
                 errorFrame.add(errorButton);
+                errorFrame.setVisible(true);
             }
-        } 
-        if (e.getSource() == notLoadButton) {
+        } else if (e.getSource() == notLoadButton) {
             loadFileFrame.dispose();
             new GraphicalGroceryApp(new GroceryList());
         }
