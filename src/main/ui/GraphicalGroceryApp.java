@@ -17,6 +17,12 @@ public class GraphicalGroceryApp {
     private JPanel viewListPanel;
     private GroceryList groceryList;
     private JMenuBar menuBar;
+    private JMenu saveFile;
+    private JMenu analyze;
+    private JMenuItem addGrocery;
+    private JMenuItem removeGrocery;
+    private JMenuItem calcTotalPrice;
+    private JMenuItem viewNutrition;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -33,6 +39,22 @@ public class GraphicalGroceryApp {
     //          remove grocery item, calculates the total price, 
     //          view nutritional report, save list
     private void displayMenu() {
+        saveFile = new JMenu("Save file");
+        analyze = new JMenu("Analyze");
+        
+        addGrocery = new JMenuItem("Add grocery item");
+        removeGrocery = new JMenuItem("Remove grocery item");
+        calcTotalPrice = new JMenuItem("Calculate total price");
+        viewNutrition = new JMenuItem("View nutritional report");
+        
+        menuBar.add(analyze);
+        menuBar.add(saveFile);
+
+        analyze.add(addGrocery);
+        analyze.add(removeGrocery);
+        analyze.add(calcTotalPrice);
+        analyze.add(calcTotalPrice);
+        analyze.add(viewNutrition);
     }
 
     //EFFECTS: setup the window
@@ -44,6 +66,7 @@ public class GraphicalGroceryApp {
         groceryFrame.setResizable(true);
         groceryFrame.setVisible(true);
 
+        groceryFrame.setJMenuBar(menuBar);
         viewListPanel(); 
     }
 
