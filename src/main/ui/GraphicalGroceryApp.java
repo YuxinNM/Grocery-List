@@ -5,13 +5,15 @@ import javax.swing.*;
 import model.Grocery;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import model.GroceryList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 // Creates the GUI panel of the grocery list app 
-public class GraphicalGroceryApp {
+public class GraphicalGroceryApp implements ActionListener{
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private JFrame groceryFrame;
     private JPanel viewListPanel;
@@ -98,5 +100,8 @@ public class GraphicalGroceryApp {
         }
     }
 
-
+    // EFFECTS: acts upon selections of the menu items as their name indicates
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
 }
