@@ -12,12 +12,12 @@ import persistence.JsonWriter;
 
 // Creates the GUI panel of the grocery list app 
 public class GraphicalGroceryApp {
+    private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private JFrame groceryFrame;
     private JPanel viewListPanel;
-    private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private GroceryList groceryList;
-    JsonWriter jsonWriter;
-    JsonReader jsonReader;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: takes the groceryList passed in, initialize the groceryList field
     //          displays the grocery list
@@ -66,4 +66,6 @@ public class GraphicalGroceryApp {
             viewListPanel.add(emptyLisButton);
         }
     }
+
+
 }

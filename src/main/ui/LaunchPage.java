@@ -14,12 +14,12 @@ import persistence.JsonReader;
 
 // A launch window that asks user to laod saved file
 public class LaunchPage implements ActionListener{
+    private static final String JSON_DESTINATION = "./data/grocerylist.json";
     JFrame loadFileFrame = new JFrame();
     JButton loadButton = new JButton("Load Previous Grocery List");
     JButton notLoadButton = new JButton("Not Load Previous Grocery List");
-    private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private GroceryList groceryList;
-    JsonReader jsonReader;
+    private JsonReader jsonReader;
 
     // EFFECTS: a window that asks user to choose one of two buttons to load or 
     //          not load saved grocery list, leads to a new window with the given choice
