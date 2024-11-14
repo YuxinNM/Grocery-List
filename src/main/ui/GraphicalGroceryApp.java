@@ -5,7 +5,6 @@ import javax.swing.*;
 import model.Grocery;
 
 import java.awt.*;
-import java.util.Scanner;
 
 import model.GroceryList;
 import persistence.JsonReader;
@@ -20,8 +19,12 @@ public class GraphicalGroceryApp {
     JsonWriter jsonWriter;
     JsonReader jsonReader;
 
-    public GraphicalGroceryApp() {
+    // EFFECTS: takes the groceryList passed in, initialize the groceryList field
+    //          displays the grocery list
+    public GraphicalGroceryApp(GroceryList groceryList) {
+        this.groceryList = groceryList;
         displayFrame();
+        
     }
 
     //EFFECTS: setup the window
@@ -58,6 +61,7 @@ public class GraphicalGroceryApp {
             }
         } else {
             JButton emptyLisButton = new JButton("No items in the list");
+            emptyLisButton.setFocusable(false);
             emptyLisButton.setVisible(true);
             viewListPanel.add(emptyLisButton);
         }
