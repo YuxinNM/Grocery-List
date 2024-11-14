@@ -7,6 +7,7 @@ import model.Grocery;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 import model.GroceryList;
 import persistence.JsonReader;
@@ -17,6 +18,8 @@ public class GraphicalGroceryApp implements ActionListener{
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private JFrame groceryFrame;
     private JPanel viewListPanel;
+    private JPanel mainPanel;
+
     private GroceryList groceryList;
     private JMenuBar menuBar;
     private JMenu saveFile;
@@ -32,6 +35,10 @@ public class GraphicalGroceryApp implements ActionListener{
     // EFFECTS: takes the groceryList passed in, initialize the groceryList field
     //          displays the grocery list
     public GraphicalGroceryApp(GroceryList groceryList) {
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(2, 2));
+
+        jsonWriter = new JsonWriter(JSON_DESTINATION);
         this.groceryList = groceryList;
         menuBar = new JMenuBar();
         displayFrame();
@@ -51,6 +58,8 @@ public class GraphicalGroceryApp implements ActionListener{
         viewNutrition = new JMenuItem("View nutritional report");
         viewGroceries = new JMenuItem("View groceries");
 
+        saveFile.addActionListener(this);
+        
         menuBar.add(analyze);
         menuBar.add(saveFile);
 
@@ -71,6 +80,7 @@ public class GraphicalGroceryApp implements ActionListener{
         groceryFrame.setVisible(true);
 
         groceryFrame.setJMenuBar(menuBar);
+        groceryFrame.add(mainPanel);
         viewListPanel(); 
     }
 
@@ -83,7 +93,7 @@ public class GraphicalGroceryApp implements ActionListener{
         addGroceryButtons();
 
         viewListPanel.setVisible(true);
-        groceryFrame.add(viewListPanel, BorderLayout.CENTER);
+        mainPanel.add(viewListPanel);
     }
 
     // EFFECTS: add grocery buttons to the viewListPanel if applicable,
@@ -95,10 +105,9 @@ public class GraphicalGroceryApp implements ActionListener{
                 viewListPanel.add(groceryButton);
             }
         } else {
-            JButton emptyLisButton = new JButton("No items in the list");
-            emptyLisButton.setFocusable(false);
-            emptyLisButton.setVisible(true);
-            viewListPanel.add(emptyLisButton);
+            JButton emptyListButton = new JButton("No items in the list");
+            setUpButton(emptyListButton);
+            viewListPanel.add(emptyListButton);
         }
     }
 
@@ -118,16 +127,46 @@ public class GraphicalGroceryApp implements ActionListener{
         } else if (e.getSource() == saveFile) {
             saveFile();
         }
-
-
     }
 
+    // EFFECTS: sets up a JButton
+    public void setUpButton(JButton button) {
+        //button.setSize(200, 250);
+        button.setFocusable(false);
+        button.setVisible(true);
+    }
+    
     // EFFECTS: saves the file to a Json object to the destination
     private void saveFile() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(groceryList);
+            jsonWriter.close();
+            JPanel saveSuccessPanel = new JPanel();    
+            //saveSuccessPanel.setLayout(new GridLayout(0, 1, 0, 3));
+            JButton saveSuccessButton = new JButton("Your grocery list has been successfully saved to " + JSON_DESTINATION);
+            setUpButton(saveSuccessButton);
+            saveSuccessPanel.add(saveSuccessButton);
+            mainPanel.add(saveSuccessPanel);
+            groceryFrame.add(mainPanel);
+        } catch (FileNotFoundException e) {
+            JPanel saveFailPanel = new JPanel();    
+            //saveSuccessPanel.setLayout(new GridLayout(0, 1, 0, 3));
+            JButton errorButton = new JButton("Unable to save file to" + JSON_DESTINATION);
+            setUpButton(errorButton);
+            saveFailPanel.add(errorButton);
+            mainPanel.add(saveFailPanel);
+            groceryFrame.add(mainPanel);
+         }
     }
 
     // EFFECTS: panel that displays the nutrition distribution by a pie chart
     private void displayNutrition() {
+                JPanel saveSuccessPanel = new JPanel();
+                JButton saveSuccessButton = new JButton("Your grocery list has been successfully saved to " + JSON_DESTINATION);
+                setUpButton(saveSuccessButton);
+                saveSuccessPanel.add(saveSuccessButton);
+                groceryFrame.add(saveSuccessPanel, BorderLayout.WEST);
     }
 
     // EFFECTS: panel that allows removing a grocery item
