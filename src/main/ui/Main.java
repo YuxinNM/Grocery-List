@@ -1,9 +1,9 @@
 package ui;
 
-// Runs the GraphicalGroceryApp() and GroceryApp() 
+// Runs the LaunchPage() and GroceryApp() 
 public class Main {
     public static void main(String[] args) {
-        new GraphicalGroceryApp();
+        new LaunchPage();
         new GroceryApp();
     }
 }
