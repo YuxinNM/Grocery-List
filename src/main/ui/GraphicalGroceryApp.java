@@ -1,12 +1,24 @@
 package ui;
 
 import javax.swing.*;
+
+import model.Grocery;
+
 import java.awt.*;
+import java.util.Scanner;
+
+import model.GroceryList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 // Creates the GUI panel of the grocery list app 
 public class GraphicalGroceryApp {
     private JFrame groceryFrame;
     private JPanel viewListPanel;
+    private static final String JSON_DESTINATION = "./data/grocerylist.json";
+    private GroceryList groceryList;
+    JsonWriter jsonWriter;
+    JsonReader jsonReader;
 
     public GraphicalGroceryApp() {
         displayFrame();
@@ -39,6 +51,15 @@ public class GraphicalGroceryApp {
     // EFFECTS: add grocery buttons to the viewListPanel if applicable,
     //          add button indicating empty grocery list if needed.
     public void addGroceryButtons() {
-
+         if (groceryList.getGroceries().size() > 0) {
+            for (Grocery next: groceryList.getGroceries()) {
+                GroceryButton groceryButton = new GroceryButton(next.getName(), next.getPrice(), next.getCategory());
+                viewListPanel.add(groceryButton);
+            }
+        } else {
+            JButton emptyLisButton = new JButton("No items in the list");
+            emptyLisButton.setVisible(true);
+            viewListPanel.add(emptyLisButton);
+        }
     }
 }
