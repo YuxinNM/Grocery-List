@@ -1,5 +1,5 @@
 
-package ui;
+package ui.GUI;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

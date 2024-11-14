@@ -1,4 +1,4 @@
-package ui;
+package ui.GUI;
 
 import javax.swing.*;
 
@@ -37,7 +37,6 @@ public class GraphicalGroceryApp implements ActionListener{
     //          displays the grocery list
     public GraphicalGroceryApp(GroceryList groceryList) {
         mainPanel = new JPanel();
-        //mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
         mainPanel.setSize(500, 500);
         mainPanel.setLayout(new GridLayout(0, 1, 0, 3));
         jsonWriter = new JsonWriter(JSON_DESTINATION);
@@ -84,7 +83,6 @@ public class GraphicalGroceryApp implements ActionListener{
         
         groceryFrame.setJMenuBar(menuBar);
         groceryFrame.add(mainPanel);
-        //groceryFrame.pack();
         groceryFrame.setVisible(true);
 
         viewListPanel(); 
@@ -111,8 +109,7 @@ public class GraphicalGroceryApp implements ActionListener{
                 viewListPanel.add(groceryButton);
             }
         } else {
-            JButton emptyListButton = new JButton("No items in the list");
-            setUpButton(emptyListButton);
+            MessageButton emptyListButton = new MessageButton("No items in the list");
             viewListPanel.add(emptyListButton);
         }
     }
@@ -135,13 +132,6 @@ public class GraphicalGroceryApp implements ActionListener{
         }
     }
 
-    // EFFECTS: sets up a JButton
-    public void setUpButton(JButton button) {
-        button.setSize(200, 250);
-        button.setFocusable(false);
-        button.setVisible(true);
-    }
-    
     // EFFECTS: saves the file to a Json object to the destination
     private void saveFile() {
         try {
@@ -149,8 +139,7 @@ public class GraphicalGroceryApp implements ActionListener{
             jsonWriter.write(groceryList);
             jsonWriter.close();
             JPanel saveSuccessPanel = new JPanel();    
-            JButton saveSuccessButton = new JButton("Your grocery list has been successfully saved to " + JSON_DESTINATION);
-            setUpButton(saveSuccessButton);
+            MessageButton saveSuccessButton = new MessageButton("Your grocery list has been successfully saved to " + JSON_DESTINATION);
             mainPanel.removeAll();
             saveSuccessPanel.add(saveSuccessButton);
             mainPanel.add(saveSuccessPanel);
@@ -158,8 +147,7 @@ public class GraphicalGroceryApp implements ActionListener{
             groceryFrame.pack();
         } catch (FileNotFoundException e) {
             JPanel saveFailPanel = new JPanel();    
-            JButton errorButton = new JButton("Unable to save file to" + JSON_DESTINATION);
-            setUpButton(errorButton);
+            MessageButton errorButton = new MessageButton("Unable to save file to" + JSON_DESTINATION);
             saveFailPanel.add(errorButton);
             mainPanel.removeAll();
             mainPanel.add(saveFailPanel);
@@ -176,8 +164,7 @@ public class GraphicalGroceryApp implements ActionListener{
     // EFFECTS: panel that allows removing a grocery item
     private void removeGroceryPanel() {
         JPanel removeSuccessPanel = new JPanel();    
-        JButton removeSuccessButton = new JButton("Your grocery has been removed");
-        setUpButton(removeSuccessButton);
+        MessageButton removeSuccessButton = new MessageButton("Your grocery has been removed");
         removeSuccessPanel.add(removeSuccessButton);
         mainPanel.removeAll();
         mainPanel.add(removeSuccessPanel);
