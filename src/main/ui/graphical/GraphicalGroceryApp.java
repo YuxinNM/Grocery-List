@@ -110,7 +110,9 @@ public class GraphicalGroceryApp implements ActionListener {
     public void viewListPanel() {
         viewListPanel = new SubPanel();
         addGroceryButtons();
+        mainPanel.removeAll();
         mainPanel.add(viewListPanel);
+        groceryFrame.pack();
     }
 
     // MODIFIES: this
@@ -140,7 +142,7 @@ public class GraphicalGroceryApp implements ActionListener {
         } else if (e.getSource() == viewNutrition) {
             displayNutrition();
         } else if (e.getSource() == viewGroceries) {
-            displayFrame();
+            viewListPanel();
         } else if (e.getSource() == saveFile) {
             saveFile();
         } else if (e.getSource() == vegeButton) {
@@ -261,9 +263,23 @@ public class GraphicalGroceryApp implements ActionListener {
         askCategoryPanel.add(otherButton);
         addGroceryPanel.add(askCategoryPanel);
         groceryFrame.pack();
-            
+        addingGrocery();
     }
     
+    // EFFECTS: finally add a grocery item with given name, price, and category
+    //          report to the user with a successful message
+    private void addingGrocery() {
+        if (category.equals("vegetable")
+        || category.equals("fruits")
+        || category.equals("others")) {
+            addGroceryPanel.removeAll();
+            MessageButton successfulButton = new MessageButton("Successfully added a grocery!");
+            addGroceryPanel.add(successfulButton);
+            groceryFrame.pack();
+            Grocery newGrocery = new Grocery(newName, price, category);
+            groceryList.addGrocery(newGrocery);
+        }
+    }
 
     // EFFECTS: prepare the buttons for each category
     private void prepareCategoryButtons() {
