@@ -147,12 +147,16 @@ public class GraphicalGroceryApp implements ActionListener {
             saveFile();
         } else if (e.getSource() == vegeButton) {
             category = "vegetables";
+            addingGrocery();
         } else if (e.getSource() == proteinButton) {
             category = "proteins";
+            addingGrocery();
         } else if (e.getSource() == grainButton) {
             category = "grains";
+            addingGrocery();
         } else if (e.getSource() == fruitButton) {
             category = "fruits";
+            addingGrocery();
         }
     }   
 
@@ -270,8 +274,10 @@ public class GraphicalGroceryApp implements ActionListener {
     // EFFECTS: finally add a grocery item with given name, price, and category
     //          report to the user with a successful message
     private void addingGrocery() {
-        if (category.equals("vegetable")
+        if (category.equals("vegetables")
         || category.equals("fruits")
+        || category.equals("proteins")
+        || category.equals("grains")
         || category.equals("others")) {
             addGroceryPanel.removeAll();
             MessageButton successfulButton = new MessageButton("Successfully added a grocery!");
@@ -302,6 +308,7 @@ public class GraphicalGroceryApp implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 category = "others";
+                addingGrocery();
             }
         });
     }
