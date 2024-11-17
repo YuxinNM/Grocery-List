@@ -243,6 +243,7 @@ public class GraphicalGroceryApp implements ActionListener {
                     addGroceryPanel.add(invalidPriceButton);
                     groceryFrame.pack();
                 } else {
+                    category = "unknown";
                     askCategoryPanel();
                 }
             }
