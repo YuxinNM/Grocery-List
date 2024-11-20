@@ -154,9 +154,6 @@ public class GraphicalGroceryApp implements ActionListener {
         } else if (e.getSource() == grainButton) {
             category = "grains";
             addingGrocery();
-        } else if (e.getSource() == fruitButton) {
-            category = "fruits";
-            addingGrocery();
         }
     }   
 
@@ -275,10 +272,10 @@ public class GraphicalGroceryApp implements ActionListener {
     //          report to the user with a successful message
     private void addingGrocery() {
         if (category.equals("vegetables")
-        || category.equals("fruits")
-        || category.equals("proteins")
-        || category.equals("grains")
-        || category.equals("others")) {
+                || category.equals("fruits")
+                || category.equals("proteins")
+                || category.equals("grains")
+                || category.equals("others")) {
             addGroceryPanel.removeAll();
             MessageButton successfulButton = new MessageButton("Successfully added a grocery!");
             addGroceryPanel.add(successfulButton);
@@ -303,7 +300,13 @@ public class GraphicalGroceryApp implements ActionListener {
         vegeButton.addActionListener(this);
         proteinButton.addActionListener(this);
         grainButton.addActionListener(this);
-        fruitButton.addActionListener(this);
+        fruitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                category = "fruits";
+                addingGrocery();
+            }
+        });
         otherButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -315,6 +318,12 @@ public class GraphicalGroceryApp implements ActionListener {
 
     // EFFECTS: get total price of the groceryList and display it on a JPanel
     private void displayTotalPrice() {
+        mainPanel.removeAll();
+        SubPanel  displayPricePanel = new SubPanel();
+        MessageButton tellPriceButton = new MessageButton("The total price of the groceries in the list: $" + String.format("%.4g%n", groceryList.getTotalPrice()));
+        displayPricePanel.add(tellPriceButton);
+        mainPanel.add(displayPricePanel);
+        groceryFrame.pack();
     }
 
     
