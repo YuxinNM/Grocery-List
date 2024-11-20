@@ -7,8 +7,8 @@ import javax.swing.JTextField;
 
 // sets up JTextFields that can be used to take user input
 public class JTextFieldUserInput extends JTextField {
-    private static final Font textFont = new Font("Arial", Font.BOLD, 15);
-    private static final Insets textMargins = new Insets(5, 10, 5, 10);
+    private static final Font textFont = new Font("Comics", Font.BOLD, 15);
+    private static final Insets textMargins = new Insets(5, 20, 5, 10);
 
     // EFFECTS: sets the textbox size as desired, font, tool tip text, margins
     public JTextFieldUserInput(int size) {
