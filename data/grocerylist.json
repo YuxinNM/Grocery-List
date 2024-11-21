@@ -1,1 +1,42 @@
-{"groceries": []}
+{"groceries": [
+    {
+        "price": 5,
+        "name": "carrot",
+        "category": "vegetables"
+    },
+    {
+        "price": 6,
+        "name": "cookie",
+        "category": "others"
+    },
+    {
+        "price": 3,
+        "name": "apple",
+        "category": "fruits"
+    },
+    {
+        "price": 6.99,
+        "name": "bread",
+        "category": "grains"
+    },
+    {
+        "price": 9.99,
+        "name": "chicken",
+        "category": "proteins"
+    },
+    {
+        "price": 5,
+        "name": "apple",
+        "category": "fruits"
+    },
+    {
+        "price": 8,
+        "name": "banana",
+        "category": "fruits"
+    },
+    {
+        "price": 7,
+        "name": "fish",
+        "category": "proteins"
+    }
+]}

@@ -41,8 +41,8 @@ public class LaunchPage implements ActionListener {
     }
 
     // EFFECTS: sets up a JButton
-    public void setUpButton(JButton button) {
-        button.addActionListener(this);
+    public void setUpButton(JButton label) {
+        label.addActionListener(this);
     }
 
     // EFFECTS: ctreates a new instance of GraphicalGroceryApp()

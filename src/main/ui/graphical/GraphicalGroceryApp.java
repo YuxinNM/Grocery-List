@@ -186,6 +186,7 @@ public class GraphicalGroceryApp implements ActionListener {
 
     // EFFECTS: panel that displays the nutrition distribution by a pie chart
     private void displayNutrition() {
+        groceryList.calcPercent();
         double vegePerct = groceryList.getVegePerct();
         double fruitPerct = groceryList.getFruitPerct();
         double proteinPerct = groceryList.getProteinPerct();
@@ -194,16 +195,17 @@ public class GraphicalGroceryApp implements ActionListener {
         
         //groceryFrame.removeAll();
 
-         mainPanel.removeAll();
+        mainPanel.removeAll();
         //SubPanel  displayNutritionPanel = new SubPanel();
         PieChart pieChart = new PieChart(vegePerct, fruitPerct, proteinPerct, grainsPerct, othersPerct);
         // BufferedImage bufferedImage = new BufferedImage(400, 400, BufferedImage.TYPE_INT_ARGB);
         // Graphics2D g2 = bufferedImage.createGraphics();
 
         // pieChart.paintComponent(g2);
-        
+        //displayNutritionPanel.add(pieChart);
+
         //displayNutritionPanel.setBuffImg(bufferedImage);
-        //mainPanel.add(displayNutritionPanel);
+        mainPanel.add(pieChart);
         pieChart.setVisible(true);
         mainPanel.add(pieChart);
         groceryFrame.pack();

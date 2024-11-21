@@ -20,4 +20,9 @@ public class PieChartSlice {
     public Color getColor() {
         return sliceColor;
     }
+
+    // EFFECTS: calculates the angle for the slice should be and return it
+    public int getArcAngle() {
+        return (int) sliceSize * 360 / 100; 
+    }
 }
