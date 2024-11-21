@@ -22,6 +22,8 @@ public class PieChart extends JComponent {
     private PieChartSlice otherSlice;
 
     // EFFECTS: creates a list of slices in the pie chart with given percentages
+    //          specify the percentages of each slice in order of: 
+    //          vegetable, fruit, protein, grain, other
     public PieChart(double vegeSize, double fruitSize, double proteinSize, double grainSize, double otherSize) {
         slices = new ArrayList<>();
         this.vegeSlice = new PieChartSlice(vegeSize, VEGE_COLOR);
