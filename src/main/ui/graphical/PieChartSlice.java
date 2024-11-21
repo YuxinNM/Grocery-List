@@ -9,6 +9,7 @@ public class PieChartSlice {
 
     //EFFECTS: creates a slice in the pie chart with given size and color
     public PieChartSlice(double size, Color color) {
-        
+        this.sliceSize = size;
+        this.sliceColor = color;
     }
 }
