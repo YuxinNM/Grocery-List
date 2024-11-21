@@ -13,6 +13,8 @@ import model.GroceryList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.awt.image.BufferedImage;
+
 // Creates the GUI panel of the grocery list app 
 public class GraphicalGroceryApp implements ActionListener {
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
@@ -184,7 +186,35 @@ public class GraphicalGroceryApp implements ActionListener {
 
     // EFFECTS: panel that displays the nutrition distribution by a pie chart
     private void displayNutrition() {
-       
+        double vegePerct = groceryList.getVegePerct();
+        double fruitPerct = groceryList.getFruitPerct();
+        double proteinPerct = groceryList.getProteinPerct();
+        double grainsPerct = groceryList.getGrainsPerct();
+        double othersPerct = groceryList.getOthersPerct();
+        
+        //groceryFrame.removeAll();
+
+         mainPanel.removeAll();
+        //SubPanel  displayNutritionPanel = new SubPanel();
+        PieChart pieChart = new PieChart(vegePerct, fruitPerct, proteinPerct, grainsPerct, othersPerct);
+        // BufferedImage bufferedImage = new BufferedImage(400, 400, BufferedImage.TYPE_INT_ARGB);
+        // Graphics2D g2 = bufferedImage.createGraphics();
+
+        // pieChart.paintComponent(g2);
+        
+        //displayNutritionPanel.setBuffImg(bufferedImage);
+        //mainPanel.add(displayNutritionPanel);
+        pieChart.setVisible(true);
+        mainPanel.add(pieChart);
+        groceryFrame.pack();
+
+        // groceryFrame.getContentPane().add(pieChart);
+        // groceryFrame.setSize(300, 200);
+
+        // groceryFrame.setVisible(true);
+        // groceryFrame.pack();
+        groceryFrame.revalidate();
+
     }
 
     // EFFECTS: panel that allows removing a grocery item

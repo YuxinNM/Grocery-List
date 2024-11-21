@@ -1,10 +1,18 @@
 package ui.graphical;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
 import java.util.*;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 // Creates a piechart with given slices
 public class PieChart extends JComponent {
@@ -39,9 +47,9 @@ public class PieChart extends JComponent {
     }
     
     // EFFECTS: paint a pie chart with the list of slices
-    @Override
     public void paint(Graphics g) {
-        drawPieChart((Graphics2D) g, getBounds(), slices);
+        Graphics2D graphics2d = (Graphics2D) g;
+        drawPieChart((Graphics2D)graphics2d, getBounds(), slices);
     }
 
     // EFFECTS: helper for paint, draws a pie chart 
@@ -57,4 +65,21 @@ public class PieChart extends JComponent {
             curSize += slices.get(i).getSliceSize();
         }
     }
+
+    // void drawPieChart(Graphics2D g, Rectangle area, ArrayList<PieChartSlice> slices) {
+    //     double total = 0.0;
+        
+    //     for (int i = 0; i < slices.size(); i++) {
+    //        total += slices.get(i).getSliceSize();
+    //     }
+    //     double curValue = 0.0;
+    //     int startAngle = 0;
+    //     for (int i = 0; i < slices.size(); i++) {
+    //        startAngle = (int) (curValue * 360 / total);
+    //        int arcAngle = (int) (slices.get(i).getSliceSize() * 360 / total);
+    //        g.setColor(slices.get(i).getColor());
+    //        g.fillArc(area.x, area.y, area.width, area.height, startAngle, arcAngle);
+    //        curValue += slices.get(i).getSliceSize();
+    //     }
+    //  }
 }
