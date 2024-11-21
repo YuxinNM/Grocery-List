@@ -15,6 +15,6 @@ public class MessageButton extends JButton {
         this.setFocusable(false);
         this.setVisible(true);
         this.setBackground(BUTTON_COLOR);
-        this.setFont(new Font("Comics", Font.BOLD, 15));
+        this.setFont(new Font("Comics", Font.ITALIC, 15));
     }
 }

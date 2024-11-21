@@ -16,7 +16,7 @@ public class GroceryButton extends JButton {
     // EFFECTS: creates a button for a grocery item with its name, price
     //          and background color corresponding to its category
     public GroceryButton(String name, double price, String category) {
-        this.setFont(new Font("Comics", Font.BOLD, 15));
+        this.setFont(new Font("Comics", Font.ITALIC, 15));
         this.price = price;
         this.setText(name);
         this.setCategoryColor(category);
