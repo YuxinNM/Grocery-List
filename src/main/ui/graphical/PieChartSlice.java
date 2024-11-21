@@ -12,4 +12,12 @@ public class PieChartSlice {
         this.sliceSize = size;
         this.sliceColor = color;
     }
+
+    public double getSliceSize() {
+        return sliceSize;
+    }
+
+    public Color getColor() {
+        return sliceColor;
+    }
 }
