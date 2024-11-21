@@ -24,11 +24,11 @@ public class PieChart extends JComponent {
     // EFFECTS: creates a list of slices in the pie chart with given percentages
     public PieChart(double vegeSize, double fruitSize, double proteinSize, double grainSize, double otherSize) {
         slices = new ArrayList<>();
-        this.vegeSlice = new PieChartSlice(vegeSize / 100, VEGE_COLOR);
-        this.fruitSlice = new PieChartSlice(fruitSize / 100, FRUIT_COLOR);
-        this.proteinSlice = new PieChartSlice(proteinSize / 100, PROTEIN_COLOR);
-        this.grainSlice = new PieChartSlice(grainSize / 100, GRAIN_COLOR);
-        this.otherSlice = new PieChartSlice(otherSize / 100, OTHERS_COLOR);
+        this.vegeSlice = new PieChartSlice(vegeSize, VEGE_COLOR);
+        this.fruitSlice = new PieChartSlice(fruitSize, FRUIT_COLOR);
+        this.proteinSlice = new PieChartSlice(proteinSize, PROTEIN_COLOR);
+        this.grainSlice = new PieChartSlice(grainSize, GRAIN_COLOR);
+        this.otherSlice = new PieChartSlice(otherSize, OTHERS_COLOR);
         slices.add(vegeSlice);
         slices.add(fruitSlice);
         slices.add(proteinSlice);
@@ -43,7 +43,16 @@ public class PieChart extends JComponent {
     }
 
     // EFFECTS: helper for paint, draws a pie chart 
-    private void drawPieChart(Graphics2D g, Rectangle bounds, ArrayList<PieChartSlice> slices) {
-        
+    private void drawPieChart(Graphics2D g, Rectangle area, ArrayList<PieChartSlice> slices) {
+        int startAngle = 0;
+        double curSize = 0.0;
+        int arcAngle = 0;
+        for (int i = 0; i < slices.size(); i++) {
+            startAngle = (int) (curSize / 100 * 360);
+            arcAngle = (int) slices.get(i).getSliceSize() / 100 * 360;
+            g.setColor(slices.get(i).getColor());
+            g.fillArc(area.x, area.y, area.width, area.height, startAngle, arcAngle);
+            curSize += slices.get(i).getSliceSize();
+        }
     }
 }
