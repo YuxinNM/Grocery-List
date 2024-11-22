@@ -44,6 +44,7 @@ public class LaunchPage implements ActionListener {
         loadFileFrame.setLayout(new GridLayout(2, 1, 5, 5));
         loadFileFrame.setVisible(true);
     }
+    
     // MODIFIES: button
     // EFFECTS: sets up a JButton
     public void setUpButton(JButton button) {

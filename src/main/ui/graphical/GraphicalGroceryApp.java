@@ -271,6 +271,7 @@ public class GraphicalGroceryApp implements ActionListener {
         mainPanel.add(removeSuccessPanel);
         groceryFrame.pack();
     }
+    
     // MODIFIES: this
     // EFFECTS: panel that allows adding a grocery item
     private void addGroceryPanel() {
