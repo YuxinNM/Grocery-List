@@ -38,5 +38,10 @@
         "price": 7,
         "name": "fish",
         "category": "proteins"
+    },
+    {
+        "price": 10.99,
+        "name": "shrimp",
+        "category": "proteins"
     }
 ]}

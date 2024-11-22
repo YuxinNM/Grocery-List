@@ -44,75 +44,23 @@ public class PieChart extends JPanel {
     public void paint(Graphics g) {
         Graphics2D graphics2d = (Graphics2D) g;
         drawPieChart((Graphics2D)graphics2d, slices);
-
-        // graphics2d.setPaint(Color.blue);
-        // graphics2d.setStroke(new BasicStroke(5));
-        // graphics2d.fillRect(0, 0, 100, 100);
     }
 
     // EFFECTS: helper for paint, draws a pie chart 
     private void drawPieChart(Graphics2D g, ArrayList<PieChartSlice> slices) {
-        // int startAngle = 0;
-        // double curSize = 0.0;
-        // int arcAngle = 0;
-        // for (int i = 0; i < slices.size(); i++) {
-        //     startAngle = (int) (curSize / 100 * 360);
-        //     arcAngle = (int) slices.get(i).getSliceSize() / 100 * 360;
-        //     g.setColor(slices.get(i).getColor());
-        //     g.fillArc(area.x, area.y, area.width, area.height, startAngle, arcAngle);
-        //     curSize += slices.get(i).getSliceSize();
-        // }
         int startAngle = 0;
         
-        //int arcAngle = 0;
-        for (int i = 0; i < slices.size(); i++) {
-            //int curAngle = 0;
+        for (int i = 0; i < slices.size() - 1; i++) {
             int arcAngle = (int) slices.get(i).getArcAngle();
             g.setPaint(slices.get(i).getColor());
-            g.setStroke(new BasicStroke(5));
-            g.fillArc(PIE_CHART_DIMENSION.width / 2 - 125, PIE_CHART_DIMENSION.height / 2 - 125, 250, 250, startAngle, arcAngle);
-    
-
-            // int arcAngle = slices.get(i).getArcAngle();
-            // g.setPaint(slices.get(i).getColor());
-            // g.setStroke(new BasicStroke(5));
-            // g.drawArc(PIE_CHART_DIMENSION.width / 2 - 50, PIE_CHART_DIMENSION.height / 2 - 50, 100, 100, startAngle, arcAngle);
-
-            //g.fillArc(area.x, area.y, area.width, area.height, startAngle, arcAngle);
-            //arcAngle += slices.get(i).getArcAngle();
-
+            //g.setStroke(new BasicStroke(5));
+            g.fillArc(PIE_CHART_DIMENSION.width / 2 - 150, PIE_CHART_DIMENSION.height / 2 - 150, 300, 300, startAngle, arcAngle);
             startAngle += arcAngle;
         }
-        // int arcAngle = (int) slices.get(0).getArcAngle();
-        // g.setPaint(slices.get(0).getColor());
-        // g.setStroke(new BasicStroke(5));
-        // g.fillArc(PIE_CHART_DIMENSION.width / 2 - 50, PIE_CHART_DIMENSION.height / 2 - 50, 100, 100, startAngle, arcAngle);
-        
-        // int arcAngle2 = slices.get(1).getArcAngle();
-        // g.setPaint(slices.get(0).getColor());
-        // g.setStroke(new BasicStroke(5));
-        // g.fillArc(PIE_CHART_DIMENSION.width / 2 - 50, PIE_CHART_DIMENSION.height / 2 - 50, 100, 100, startAngle, 34);
+        g.setPaint(slices.get(slices.size() - 1).getColor());
+        //g.setStroke(new BasicStroke(5));
+        g.fillArc(PIE_CHART_DIMENSION.width / 2 - 150, PIE_CHART_DIMENSION.height / 2 - 150, 300, 300, startAngle, 360 - startAngle);
 
-        // g.setPaint(Color.blue);
-        // g.setStroke(new BasicStroke(5));
-        // //g.fillRect(0, 0, 100, 100);
-        // g.drawArc(PIE_CHART_DIMENSION.width / 2 - 50, PIE_CHART_DIMENSION.height / 2 - 50, 100, 100, 0, 180);
+        
     }
-
-    // void drawPieChart(Graphics2D g, Rectangle area, ArrayList<PieChartSlice> slices) {
-    //     double total = 0.0;
-        
-    //     for (int i = 0; i < slices.size(); i++) {
-    //        total += slices.get(i).getSliceSize();
-    //     }
-    //     double curValue = 0.0;
-    //     int startAngle = 0;
-    //     for (int i = 0; i < slices.size(); i++) {
-    //        startAngle = (int) (curValue * 360 / total);
-    //        int arcAngle = (int) (slices.get(i).getSliceSize() * 360 / total);
-    //        g.setColor(slices.get(i).getColor());
-    //        g.fillArc(area.x, area.y, area.width, area.height, startAngle, arcAngle);
-    //        curValue += slices.get(i).getSliceSize();
-    //     }
-    //  }
 }
