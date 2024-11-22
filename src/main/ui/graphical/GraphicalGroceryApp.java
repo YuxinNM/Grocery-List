@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 import model.GroceryList;
-import persistence.JsonReader;
 import persistence.JsonWriter;
 
 // Creates the GUI panel of the grocery list app 
