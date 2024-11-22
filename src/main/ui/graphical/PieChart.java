@@ -40,6 +40,7 @@ public class PieChart extends JPanel {
         slices.add(otherSlice);
     }
     
+    // MODIFIES: this
     // EFFECTS: paint a pie chart with the list of slices
     public void paint(Graphics g) {
         Graphics2D graphics2d = (Graphics2D) g;
@@ -47,6 +48,7 @@ public class PieChart extends JPanel {
         drawLegend(graphics2d);
     }
 
+    // MODIFIES: this
     // EFFECTS: write legend for the colors in the pie chart
     private void drawLegend(Graphics2D g) {
         g.setPaint(VEGE_COLOR);
@@ -70,6 +72,7 @@ public class PieChart extends JPanel {
         g.drawString(otherSlice.getSliceSize() + "% others", 30, 130);
     }
 
+    // MODIFIES: this
     // EFFECTS: helper for paint, draws a pie chart 
     private void drawPieChart(Graphics2D g, ArrayList<PieChartSlice> slices) {
         int startAngle = 0;

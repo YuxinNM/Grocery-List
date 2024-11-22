@@ -35,6 +35,7 @@ public class LaunchPage implements ActionListener {
         loadFileFrame.add(notLoadButton);
     }
 
+    // MODIFIES: this
     // EFFECTS: sets up a JFrame
     public void setUpFrame() {
         loadFileFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,12 +44,13 @@ public class LaunchPage implements ActionListener {
         loadFileFrame.setLayout(new GridLayout(2, 1, 5, 5));
         loadFileFrame.setVisible(true);
     }
-
+    // MODIFIES: button
     // EFFECTS: sets up a JButton
     public void setUpButton(JButton button) {
         button.addActionListener(this);
     }
 
+    // MODIFIES: this
     // EFFECTS: ctreates a new instance of GraphicalGroceryApp()
     //          with loaded or empty groceryList indicated by the button user clicks
     @Override

@@ -23,6 +23,7 @@ public class GroceryButton extends JButton {
         this.setFocusable(false);        
     }
 
+    // MODIFIES: this
     // EFFECTS: sets the button color according to the category
     private void setCategoryColor(String category) {
         Color color;
@@ -40,7 +41,8 @@ public class GroceryButton extends JButton {
         this.setBackground(color);
         this.setOpaque(true);
     }
-
+    
+    // MODIFIES: this
     // EFFECTS: the button will display the name and price of the grocery
     @Override
     public void setText(String text) {

@@ -54,6 +54,7 @@ public class GraphicalGroceryApp implements ActionListener {
         displayMenu();
     }
 
+    // MODIFIES: this
     // EFFECTS: display menu with menu items: add new grocery item,
     //          remove grocery item, calculates the total price, 
     //          view nutritional report, save list
@@ -78,6 +79,7 @@ public class GraphicalGroceryApp implements ActionListener {
         addActionListenerToMenu();
     }
 
+    // MODIFIES: this
     //EFFECTS: addActionListener to the JMenuItems
     private void addActionListenerToMenu() {
         addGrocery.addActionListener(this);
@@ -88,6 +90,7 @@ public class GraphicalGroceryApp implements ActionListener {
         saveFile.addActionListener(this);
     }
 
+    // MODIFIES: this
     //EFFECTS: setup the window
     public void displayFrame() {
         groceryFrame = new JFrame();
@@ -129,6 +132,7 @@ public class GraphicalGroceryApp implements ActionListener {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: acts upon selections of the menu items as their name indicates
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -156,6 +160,7 @@ public class GraphicalGroceryApp implements ActionListener {
         }
     }   
 
+    // MODIFIES: this
     // EFFECTS: saves the file to a Json object to the destination
     private void saveFile() {
         try {
@@ -181,6 +186,7 @@ public class GraphicalGroceryApp implements ActionListener {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: panel that displays the nutrition distribution by a pie chart
     private void displayNutrition() {
         if (groceryList.getGroceries().size() > 0) {
@@ -206,6 +212,7 @@ public class GraphicalGroceryApp implements ActionListener {
         }
     }
 
+    //MODIFIES: this
     //EFFECTS: panel to get the name of grocery to remove, 
     //         removes the item in the list with given name,
     //         moves on to the removeSuccess panel
@@ -248,6 +255,7 @@ public class GraphicalGroceryApp implements ActionListener {
         return false;
     }
 
+    // MODIFIES: this
     // EFFECTS: display remove success message
     private void removeSuccessPanel(boolean nameInList) {
         SubPanel removeSuccessPanel = new SubPanel();    
@@ -263,7 +271,7 @@ public class GraphicalGroceryApp implements ActionListener {
         mainPanel.add(removeSuccessPanel);
         groceryFrame.pack();
     }
-
+    // MODIFIES: this
     // EFFECTS: panel that allows adding a grocery item
     private void addGroceryPanel() {
         addGroceryPanel = new SubPanel();
@@ -272,6 +280,7 @@ public class GraphicalGroceryApp implements ActionListener {
         askNamePanel();
     }
 
+    // MODIFIES: this
     // EFFECTS: ask for name panel
     private void askNamePanel() {
         SubPanel askNamePanel = new SubPanel();
@@ -291,6 +300,7 @@ public class GraphicalGroceryApp implements ActionListener {
         });
     }
 
+    // MODIFIES: this
     // EFFECTS: ask price panel for adding a grocery
     private void askPricePanel() {
         SubPanel askPricePanel = new SubPanel();
@@ -303,6 +313,7 @@ public class GraphicalGroceryApp implements ActionListener {
         addPriceInputListener(priceTextInput);
     }
 
+    // MODIFIES: this
     // EFFECTS: accepts the price if >0 and is a number, move on to the asking for category panel,
     //          otherwise output invalid price panel
     private void addPriceInputListener(JTextFieldUserInput priceTextInput) {
@@ -330,6 +341,7 @@ public class GraphicalGroceryApp implements ActionListener {
         });
     }
 
+    // MODIFIES: this
     // EFFECTS: ask for the category for the grocery added
     private void askCategoryPanel() {
         addGroceryPanel.removeAll();
@@ -347,6 +359,7 @@ public class GraphicalGroceryApp implements ActionListener {
         addingGrocery();
     }
     
+    // MODIFIES: this
     // EFFECTS: finally add a grocery item with given name, price, and category
     //          report to the user with a successful message
     private void addingGrocery() {
@@ -364,6 +377,7 @@ public class GraphicalGroceryApp implements ActionListener {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: prepare the buttons for each category
     private void prepareCategoryButtons() {
         vegeButton = new MessageButton("vegetables");
@@ -374,6 +388,7 @@ public class GraphicalGroceryApp implements ActionListener {
         addActionListenerToCategory();
     }
 
+    // MODIFIES: this
     // EFFECTS: addActionListener to the category buttons
     private void addActionListenerToCategory() {
         vegeButton.addActionListener(this);
@@ -395,6 +410,7 @@ public class GraphicalGroceryApp implements ActionListener {
         });
     }
 
+    // MODIFIES: this
     // EFFECTS: get total price of the groceryList and display it on a JPanel
     private void displayTotalPrice() {
         mainPanel.removeAll();
