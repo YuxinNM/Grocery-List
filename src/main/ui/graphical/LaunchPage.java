@@ -17,14 +17,17 @@ public class LaunchPage implements ActionListener {
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private GroceryList groceryList;
     private JsonReader jsonReader;
-    JFrame loadFileFrame = new JFrame();
-    MessageButton loadButton = new MessageButton("Load Previous Grocery List");
-    MessageButton notLoadButton = new MessageButton("Not Load Previous Grocery List");
+    JFrame loadFileFrame;
+    MessageButton loadButton;
+    MessageButton notLoadButton;
 
     // EFFECTS: a window that asks user to choose one of two buttons to load or 
     //          not load saved grocery list, leads to a new window with the given choice
     public LaunchPage() {
         jsonReader = new JsonReader(JSON_DESTINATION);
+        loadFileFrame = new JFrame();
+        loadButton = new MessageButton("Load Previous Grocery List");
+        notLoadButton = new MessageButton("Not Load Previous Grocery List");
         setUpFrame();
         setUpButton(loadButton);
         setUpButton(notLoadButton);
