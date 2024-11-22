@@ -1,4 +1,4 @@
-# My Personal Project
+# Nutritional Grocery List
 
 ## What will the application do?
 The application will be a budget and nutrition planner for grocery shopping (food). 
@@ -32,3 +32,46 @@ I started grocery shopping recently. As a huge planner, I like writing my grocer
 - As a user, I want to view the pie chart of the recommended distribution of the good groups
 - As a user, when I select the quit option from the application menu, I want to be reminded to save my to-do list to file and have the option to do so or not.
 - As a user, when I start the application, I want to be given the option to load my to-do list from file.
+
+# Instructions for End User
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by:
+    - clicking on the *Actions* menu bar, there will be a drop down menu
+    - clicking on *Remove grocery item*
+    - following the instruction shown on the window:
+        - enter the name of the grocery that is going to be removed
+    - the grocery item will be removed from the list successfully if the name entered matches the grocery item in the list, *successfully removed* message will be shown
+    - no grocery items will be removed from the list if the name entered does not match any grocery items in the list, *the grocery is not in the list* message will be shown
+
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by:
+    - clicking on the *Actions* menu bar, there will be a drop down menu
+    - clicking on *Calculate total price*
+
+- You can locate my visual component by:
+    - clicking on the *Actions* menu bar, there will be a drop down menu
+    - clicking on *View nutritional report*
+
+- You can save the state of my application by:
+    - clicking on the *save file* menu bar on the top left corner of the window
+
+- You can reload the state of my application by:
+    - when the user runs the program, there will be a pop-up window that has 2 buttons
+    - clicking on the button that says *Load Previous Grocery List* can reload the state of my application
+    - clicking on the button that says *Not Load Previous Grocery List* will then not do so.
+
+## How to add a Grocery item to the GroceryList?
+After the user selected to load or not load their previous list of groceries, there will be a menu bar at the top left corner. 
+- click on the *Actions* menu bar, there will be a drop down menu
+- click on *Add grocery item*
+- follow the instructions shown on the window for each step:
+    - enter the name of the grocery, enter to submit
+    - enter the price of the grocery, enter to submit
+        - *invalid price* message when price is < 0, or not a number
+        - can click on the *Add grocery item* again from drop down menu to restart
+    - select a category by clicking on the given options
+- a grocery item will be added successfully!
+
+## How to view all the grocery items added in the list?
+- click on the *Actions* menu bar, there will be a drop down menu
+- click on *View groceries*
+
+
