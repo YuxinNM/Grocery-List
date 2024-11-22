@@ -55,19 +55,19 @@ public class PieChart extends JPanel {
 
         g.setPaint(FRUIT_COLOR);
         g.setFont(font);
-        g.drawString(fruitSlice.getSliceSize() + "%fruits", 30, 70);
+        g.drawString(fruitSlice.getSliceSize() + "% fruits", 30, 70);
 
         g.setPaint(PROTEIN_COLOR);
         g.setFont(font);
-        g.drawString(proteinSlice.getSliceSize() + "%proteins", 30, 90);
+        g.drawString(proteinSlice.getSliceSize() + "% proteins", 30, 90);
 
         g.setPaint(GRAIN_COLOR);
         g.setFont(font);
-        g.drawString(grainSlice.getSliceSize() + "%grains", 30, 110);
+        g.drawString(grainSlice.getSliceSize() + "% grains", 30, 110);
 
         g.setPaint(OTHERS_COLOR);
         g.setFont(font);
-        g.drawString(otherSlice.getSliceSize() + "%others", 30, 130);
+        g.drawString(otherSlice.getSliceSize() + "% others", 30, 130);
     }
 
     // EFFECTS: helper for paint, draws a pie chart 
