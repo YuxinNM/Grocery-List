@@ -51,23 +51,23 @@ public class PieChart extends JPanel {
     private void drawLegend(Graphics2D g) {
         g.setPaint(VEGE_COLOR);
         g.setFont(font);
-        g.drawString("%vegetables", 30, 50);
+        g.drawString(vegeSlice.getSliceSize() + "%vegetables", 30, 50);
 
         g.setPaint(FRUIT_COLOR);
         g.setFont(font);
-        g.drawString("%fruits", 30, 70);
+        g.drawString(fruitSlice.getSliceSize() + "%fruits", 30, 70);
 
         g.setPaint(PROTEIN_COLOR);
         g.setFont(font);
-        g.drawString("%proteins", 30, 90);
+        g.drawString(proteinSlice.getSliceSize() + "%proteins", 30, 90);
 
         g.setPaint(GRAIN_COLOR);
         g.setFont(font);
-        g.drawString("%grains", 30, 110);
+        g.drawString(grainSlice.getSliceSize() + "%grains", 30, 110);
 
         g.setPaint(OTHERS_COLOR);
         g.setFont(font);
-        g.drawString("%others", 30, 130);
+        g.drawString(otherSlice.getSliceSize() + "%others", 30, 130);
     }
 
     // EFFECTS: helper for paint, draws a pie chart 
