@@ -206,7 +206,7 @@ public class GraphicalGroceryApp implements ActionListener {
         SubPanel askRemoveNamePanel = new SubPanel();
         String askNameRemove = "Please enter the name of the grocery you want to remove:";
         MessageButton askRemoveNameButton = new MessageButton(askNameRemove);
-        String notes = "If there are duplicates, the first one in the list will be removed.";
+        String notes = "Notes: if there are duplicates, the first one in the list will be removed.";
         MessageButton notesButton = new MessageButton(notes);
         JTextFieldUserInput nameToRemove = new JTextFieldUserInput(10);
         askRemoveNamePanel.add(askRemoveNameButton);
@@ -219,20 +219,40 @@ public class GraphicalGroceryApp implements ActionListener {
         nameToRemove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                newName = nameToRemove.getText();
-                removeSuccessPanel();
+                String nameForRemoving = nameToRemove.getText();
+                boolean nameInList = removeFirstInList(groceryList, nameForRemoving);
+                removeSuccessPanel(nameInList);
             }
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: removes the first grocery with given name in the groceryList
+    //          return true if grocery was in the list, false if cannot find it
+    private boolean removeFirstInList(GroceryList groceryList, String nameToRemove) {
+        for (int i = 0; i < groceryList.getGroceries().size(); i++) {
+            Grocery current =  groceryList.getGroceries().get(i);
+            if (current.getName().equals(nameToRemove)) {
+                groceryList.removeGrocery(current);
+                return true;
+            }
+        }
+        return false;
+    }
+
     // EFFECTS: display remove success message
-    private void removeSuccessPanel() {
+    private void removeSuccessPanel(boolean nameInList) {
         SubPanel removeSuccessPanel = new SubPanel();    
-        MessageButton removeSuccessButton = new MessageButton("Your grocery has been removed");
-        removeSuccessPanel.add(removeSuccessButton);
+        MessageButton removeSuccessButton = new MessageButton("Your grocery has been removed successfully!");
+        MessageButton removeUnsuccessButton = new MessageButton("The grocery is not in the list...");
+       
         mainPanel.removeAll();
+        if (nameInList) {
+            removeSuccessPanel.add(removeSuccessButton);
+        } else {
+            removeSuccessPanel.add(removeUnsuccessButton);
+        }
         mainPanel.add(removeSuccessPanel);
-        groceryFrame.add(mainPanel);
         groceryFrame.pack();
     }
 
