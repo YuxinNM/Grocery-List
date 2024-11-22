@@ -192,17 +192,41 @@ public class GraphicalGroceryApp implements ActionListener {
 
         mainPanel.removeAll();
         PieChart pieChart = new PieChart(vegePerct, fruitPerct, proteinPerct, grainsPerct, othersPerct);
-        
         mainPanel.add(pieChart);
         pieChart.setVisible(true);
         mainPanel.add(pieChart);
         groceryFrame.pack();
-
         groceryFrame.revalidate();
     }
 
-    // EFFECTS: panel that allows removing a grocery item
+    //EFFECTS: panel to get the name of grocery to remove, 
+    //         removes the item in the list with given name,
+    //         moves on to the removeSuccess panel
     private void removeGroceryPanel() {
+        SubPanel askRemoveNamePanel = new SubPanel();
+        String askNameRemove = "Please enter the name of the grocery you want to remove:";
+        MessageButton askRemoveNameButton = new MessageButton(askNameRemove);
+        String notes = "If there are duplicates, the first one in the list will be removed.";
+        MessageButton notesButton = new MessageButton(notes);
+        JTextFieldUserInput nameToRemove = new JTextFieldUserInput(10);
+        askRemoveNamePanel.add(askRemoveNameButton);
+        askRemoveNamePanel.add(notesButton);
+        askRemoveNamePanel.add(nameToRemove);
+        mainPanel.removeAll();
+        mainPanel.add(askRemoveNamePanel);
+        groceryFrame.pack();
+
+        nameToRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                newName = nameToRemove.getText();
+                removeSuccessPanel();
+            }
+        });
+    }
+
+    // EFFECTS: display remove success message
+    private void removeSuccessPanel() {
         SubPanel removeSuccessPanel = new SubPanel();    
         MessageButton removeSuccessButton = new MessageButton("Your grocery has been removed");
         removeSuccessPanel.add(removeSuccessButton);
@@ -341,6 +365,4 @@ public class GraphicalGroceryApp implements ActionListener {
         mainPanel.add(displayPricePanel);
         groceryFrame.pack();
     }
-
-    
 }
