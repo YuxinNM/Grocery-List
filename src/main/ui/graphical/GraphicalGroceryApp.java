@@ -93,6 +93,7 @@ public class GraphicalGroceryApp implements ActionListener {
         groceryFrame = new JFrame();
         groceryFrame.setTitle("Grocery List");
         groceryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        groceryFrame.setLocation(350, 80);;
         groceryFrame.setSize(500, 500);
         groceryFrame.setResizable(true);
         

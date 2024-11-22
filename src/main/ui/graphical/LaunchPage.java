@@ -39,6 +39,7 @@ public class LaunchPage implements ActionListener {
     public void setUpFrame() {
         loadFileFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         loadFileFrame.setSize(500,500);
+        loadFileFrame.setLocationRelativeTo(null);
         loadFileFrame.setLayout(new GridLayout(2, 1, 5, 5));
         loadFileFrame.setVisible(true);
     }

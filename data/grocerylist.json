@@ -43,5 +43,15 @@
         "price": 10.99,
         "name": "shrimp",
         "category": "proteins"
+    },
+    {
+        "price": 7.68,
+        "name": "noodle",
+        "category": "grains"
+    },
+    {
+        "price": 15.99,
+        "name": "walnuts",
+        "category": "others"
     }
 ]}
