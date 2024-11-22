@@ -196,7 +196,6 @@ public class GraphicalGroceryApp implements ActionListener {
             pieChart.setVisible(true);
             mainPanel.add(pieChart);
             groceryFrame.pack();
-            groceryFrame.revalidate();
         } else {
             mainPanel.removeAll();
             SubPanel noItemSubPanel = new SubPanel();
@@ -204,7 +203,6 @@ public class GraphicalGroceryApp implements ActionListener {
             noItemSubPanel.add(noItemButton);
             mainPanel.add(noItemSubPanel);
             groceryFrame.pack();
-            groceryFrame.revalidate();
         }
     }
 
@@ -219,8 +217,9 @@ public class GraphicalGroceryApp implements ActionListener {
         MessageButton notesButton = new MessageButton(notes);
         JTextFieldUserInput nameToRemove = new JTextFieldUserInput(10);
         askRemoveNamePanel.add(askRemoveNameButton);
-        askRemoveNamePanel.add(notesButton);
         askRemoveNamePanel.add(nameToRemove);
+        askRemoveNamePanel.add(notesButton);
+        
         mainPanel.removeAll();
         mainPanel.add(askRemoveNamePanel);
         groceryFrame.pack();
