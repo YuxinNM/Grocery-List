@@ -43,7 +43,12 @@ public class PieChart extends JPanel {
     // EFFECTS: paint a pie chart with the list of slices
     public void paint(Graphics g) {
         Graphics2D graphics2d = (Graphics2D) g;
-        drawPieChart((Graphics2D)graphics2d, slices);
+        drawPieChart(graphics2d, slices);
+        drawLegend(graphics2d);
+    }
+
+    // EFFECTS: write legend for the colors in the pie chart
+    private void drawLegend(Graphics2D graphics2d) {
     }
 
     // EFFECTS: helper for paint, draws a pie chart 
