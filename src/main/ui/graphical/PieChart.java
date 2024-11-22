@@ -73,14 +73,15 @@ public class PieChart extends JPanel {
     // EFFECTS: helper for paint, draws a pie chart 
     private void drawPieChart(Graphics2D g, ArrayList<PieChartSlice> slices) {
         int startAngle = 0;
-        
+        int x = PIE_CHART_DIMENSION.width / 2 - 150;
+        int y = PIE_CHART_DIMENSION.height / 2 - 150;
         for (int i = 0; i < slices.size() - 1; i++) {
             int arcAngle = (int) slices.get(i).getArcAngle();
             g.setPaint(slices.get(i).getColor());
-            g.fillArc(PIE_CHART_DIMENSION.width / 2 - 150, PIE_CHART_DIMENSION.height / 2 - 150, 300, 300, startAngle, arcAngle);
+            g.fillArc(x, y, 300, 300, startAngle, arcAngle);
             startAngle += arcAngle;
         }
         g.setPaint(slices.get(slices.size() - 1).getColor());
-        g.fillArc(PIE_CHART_DIMENSION.width / 2 - 150, PIE_CHART_DIMENSION.height / 2 - 150, 300, 300, startAngle, 360 - startAngle);
+        g.fillArc(x, y, 300, 300, startAngle, 360 - startAngle);
     }
 }

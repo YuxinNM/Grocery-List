@@ -174,7 +174,8 @@ public class GroceryApp {
 
     // EFFECTS: print the total price of groceries in the list
     private void printPrice() {
-        System.out.println("\nThe total price of the groceries in the list: $" + String.format("%.4g%n", groceryList.getTotalPrice()));
+        String price = String.format("%.4g%n", groceryList.getTotalPrice());
+        System.out.println("\nThe total price of the groceries in the list: $" + price);
     }
 
     // EFFECTS: print the list of groceries with its name & price

@@ -337,7 +337,9 @@ public class GraphicalGroceryApp implements ActionListener {
     private void displayTotalPrice() {
         mainPanel.removeAll();
         SubPanel  displayPricePanel = new SubPanel();
-        MessageButton tellPriceButton = new MessageButton("The total price of the groceries in the list: $" + String.format("%.4g%n", groceryList.getTotalPrice()));
+        String messageString = "The total price of the groceries in the list: $";
+        String price = String.format("%.4g%n", groceryList.getTotalPrice());
+        MessageButton tellPriceButton = new MessageButton(messageString + price);
         displayPricePanel.add(tellPriceButton);
         mainPanel.add(displayPricePanel);
         groceryFrame.pack();
