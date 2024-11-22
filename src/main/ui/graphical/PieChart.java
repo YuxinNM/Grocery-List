@@ -10,11 +10,11 @@ import java.util.*;
 public class PieChart extends JPanel {
     private static final Color VEGE_COLOR = new Color(152,200,152);
     private static final Color FRUIT_COLOR = new Color(255,205,225);
-    private static final Color PROTEIN_COLOR = new Color(225,230,255);
+    private static final Color PROTEIN_COLOR = new Color(233,225,255);
     private static final Color GRAIN_COLOR = new Color(245,222,179);
     private static final Color OTHERS_COLOR = new Color(216,191,216);
     private static final Dimension PIE_CHART_DIMENSION = new Dimension(500, 500);
-
+    private static final Font font = new Font("Comics", Font.BOLD, 18);
     private ArrayList<PieChartSlice> slices;
     private PieChartSlice vegeSlice;
     private PieChartSlice fruitSlice;
@@ -48,7 +48,26 @@ public class PieChart extends JPanel {
     }
 
     // EFFECTS: write legend for the colors in the pie chart
-    private void drawLegend(Graphics2D graphics2d) {
+    private void drawLegend(Graphics2D g) {
+        g.setPaint(VEGE_COLOR);
+        g.setFont(font);
+        g.drawString("%vegetables", 30, 50);
+
+        g.setPaint(FRUIT_COLOR);
+        g.setFont(font);
+        g.drawString("%fruits", 30, 70);
+
+        g.setPaint(PROTEIN_COLOR);
+        g.setFont(font);
+        g.drawString("%proteins", 30, 90);
+
+        g.setPaint(GRAIN_COLOR);
+        g.setFont(font);
+        g.drawString("%grains", 30, 110);
+
+        g.setPaint(OTHERS_COLOR);
+        g.setFont(font);
+        g.drawString("%others", 30, 130);
     }
 
     // EFFECTS: helper for paint, draws a pie chart 
