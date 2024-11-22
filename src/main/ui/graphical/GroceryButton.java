@@ -7,7 +7,7 @@ import java.awt.*;
 public class GroceryButton extends JButton {
     private static final Color VEGE_COLOR = new Color(152,200,152);
     private static final Color FRUIT_COLOR = new Color(255,228,225);
-    private static final Color PROTEIN_COLOR = new Color(240,255,255);
+    private static final Color PROTEIN_COLOR = new Color(240,255,250);
     private static final Color GRAIN_COLOR = new Color(245,222,179);
     private static final Color OTHERS_COLOR = new Color(216,191,216);
     private String content;
