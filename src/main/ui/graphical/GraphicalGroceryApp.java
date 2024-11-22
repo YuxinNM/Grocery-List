@@ -192,31 +192,16 @@ public class GraphicalGroceryApp implements ActionListener {
         double proteinPerct = groceryList.getProteinPerct();
         double grainsPerct = groceryList.getGrainsPerct();
         double othersPerct = groceryList.getOthersPerct();
-        
-        //groceryFrame.removeAll();
 
         mainPanel.removeAll();
-        //SubPanel  displayNutritionPanel = new SubPanel();
         PieChart pieChart = new PieChart(vegePerct, fruitPerct, proteinPerct, grainsPerct, othersPerct);
-        // BufferedImage bufferedImage = new BufferedImage(400, 400, BufferedImage.TYPE_INT_ARGB);
-        // Graphics2D g2 = bufferedImage.createGraphics();
-
-        // pieChart.paintComponent(g2);
-        //displayNutritionPanel.add(pieChart);
-
-        //displayNutritionPanel.setBuffImg(bufferedImage);
+        
         mainPanel.add(pieChart);
         pieChart.setVisible(true);
         mainPanel.add(pieChart);
         groceryFrame.pack();
 
-        // groceryFrame.getContentPane().add(pieChart);
-        // groceryFrame.setSize(300, 200);
-
-        // groceryFrame.setVisible(true);
-        // groceryFrame.pack();
         groceryFrame.revalidate();
-
     }
 
     // EFFECTS: panel that allows removing a grocery item

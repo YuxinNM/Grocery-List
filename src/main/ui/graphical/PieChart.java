@@ -53,14 +53,10 @@ public class PieChart extends JPanel {
         for (int i = 0; i < slices.size() - 1; i++) {
             int arcAngle = (int) slices.get(i).getArcAngle();
             g.setPaint(slices.get(i).getColor());
-            //g.setStroke(new BasicStroke(5));
             g.fillArc(PIE_CHART_DIMENSION.width / 2 - 150, PIE_CHART_DIMENSION.height / 2 - 150, 300, 300, startAngle, arcAngle);
             startAngle += arcAngle;
         }
         g.setPaint(slices.get(slices.size() - 1).getColor());
-        //g.setStroke(new BasicStroke(5));
         g.fillArc(PIE_CHART_DIMENSION.width / 2 - 150, PIE_CHART_DIMENSION.height / 2 - 150, 300, 300, startAngle, 360 - startAngle);
-
-        
     }
 }
