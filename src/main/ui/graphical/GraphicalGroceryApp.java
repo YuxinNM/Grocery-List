@@ -13,8 +13,6 @@ import model.GroceryList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
-import java.awt.image.BufferedImage;
-
 // Creates the GUI panel of the grocery list app 
 public class GraphicalGroceryApp implements ActionListener {
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
@@ -33,7 +31,6 @@ public class GraphicalGroceryApp implements ActionListener {
     private JMenuItem saveFile;
 
     private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
 
     private SubPanel addGroceryPanel;
     private String newName;
