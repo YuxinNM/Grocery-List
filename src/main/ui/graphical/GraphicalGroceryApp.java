@@ -183,20 +183,29 @@ public class GraphicalGroceryApp implements ActionListener {
 
     // EFFECTS: panel that displays the nutrition distribution by a pie chart
     private void displayNutrition() {
-        groceryList.calcPercent();
-        double vegePerct = groceryList.getVegePerct();
-        double fruitPerct = groceryList.getFruitPerct();
-        double proteinPerct = groceryList.getProteinPerct();
-        double grainsPerct = groceryList.getGrainsPerct();
-        double othersPerct = groceryList.getOthersPerct();
-
-        mainPanel.removeAll();
-        PieChart pieChart = new PieChart(vegePerct, fruitPerct, proteinPerct, grainsPerct, othersPerct);
-        mainPanel.add(pieChart);
-        pieChart.setVisible(true);
-        mainPanel.add(pieChart);
-        groceryFrame.pack();
-        groceryFrame.revalidate();
+        if (groceryList.getGroceries().size() > 0) {
+            groceryList.calcPercent();
+            double vegePerct = groceryList.getVegePerct();
+            double fruitPerct = groceryList.getFruitPerct();
+            double proteinPerct = groceryList.getProteinPerct();
+            double grainsPerct = groceryList.getGrainsPerct();
+            double othersPerct = groceryList.getOthersPerct();
+    
+            mainPanel.removeAll();
+            PieChart pieChart = new PieChart(vegePerct, fruitPerct, proteinPerct, grainsPerct, othersPerct);
+            pieChart.setVisible(true);
+            mainPanel.add(pieChart);
+            groceryFrame.pack();
+            groceryFrame.revalidate();
+        } else {
+            mainPanel.removeAll();
+            SubPanel noItemSubPanel = new SubPanel();
+            MessageButton noItemButton = new MessageButton("Please add groceries in the list first.");
+            noItemSubPanel.add(noItemButton);
+            mainPanel.add(noItemSubPanel);
+            groceryFrame.pack();
+            groceryFrame.revalidate();
+        }
     }
 
     //EFFECTS: panel to get the name of grocery to remove, 
@@ -292,18 +301,31 @@ public class GraphicalGroceryApp implements ActionListener {
         askPricePanel.add(priceTextInput);
         addGroceryPanel.add(askPricePanel);
         groceryFrame.pack();
+        addPriceInputListener(priceTextInput);
+    }
+
+    // EFFECTS: accepts the price if >0 and is a number, move on to the asking for category panel,
+    //          otherwise output invalid price panel
+    private void addPriceInputListener(JTextFieldUserInput priceTextInput) {
         priceTextInput.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                price = Double.parseDouble(priceTextInput.getText());
-                if (price < 0) {
+                try {
+                    price = Double.parseDouble(priceTextInput.getText());
+                    if (price > 0) {
+                        category = "unknown";
+                        askCategoryPanel();
+                    } else {
+                        MessageButton invalidPriceButton = new MessageButton("Invalid price");
+                        addGroceryPanel.removeAll();
+                        addGroceryPanel.add(invalidPriceButton);
+                        groceryFrame.pack();
+                    }
+                } catch (Exception exception) {
                     MessageButton invalidPriceButton = new MessageButton("Invalid price");
                     addGroceryPanel.removeAll();
                     addGroceryPanel.add(invalidPriceButton);
                     groceryFrame.pack();
-                } else {
-                    category = "unknown";
-                    askCategoryPanel();
                 }
             }
         });
