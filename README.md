@@ -44,14 +44,14 @@ I started grocery shopping recently. As a huge planner, I like writing my grocer
 
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by:
     - clicking on the *Actions* menu bar, there will be a drop down menu
-    - clicking on *Calculate total price*
+    - clicking on the *Calculate total price*
 
 - You can locate my visual component by:
     - clicking on the *Actions* menu bar, there will be a drop down menu
-    - clicking on *View nutritional report*
+    - clicking on the *View nutritional report*
 
 - You can save the state of my application by:
-    - clicking on the *save file* menu bar on the top left corner of the window
+    - clicking on the *save file* menu item on the top left corner of the window
 
 - You can reload the state of my application by:
     - when the user runs the program, there will be a pop-up window that has 2 buttons
