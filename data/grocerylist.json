@@ -43,5 +43,10 @@
         "price": 3.9,
         "name": "carrot",
         "category": "vegetables"
+    },
+    {
+        "price": 6.99,
+        "name": "peach",
+        "category": "fruits"
     }
 ]}

@@ -45,7 +45,7 @@ public class GraphicalGroceryApp implements ActionListener {
     //          displays the grocery list
     public GraphicalGroceryApp(GroceryList groceryList) {
         mainPanel = new JPanel();
-        mainPanel.setSize(500, 500);
+        mainPanel.setSize(550, 500);
         mainPanel.setLayout(new GridLayout(0, 1, 0, 3));
         jsonWriter = new JsonWriter(JSON_DESTINATION);
         this.groceryList = groceryList;
@@ -94,7 +94,7 @@ public class GraphicalGroceryApp implements ActionListener {
         groceryFrame.setTitle("Grocery List");
         groceryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         groceryFrame.setLocation(350, 80);;
-        groceryFrame.setSize(500, 500);
+        groceryFrame.setSize(550, 500);
         groceryFrame.setResizable(true);
         
         groceryFrame.setJMenuBar(menuBar);

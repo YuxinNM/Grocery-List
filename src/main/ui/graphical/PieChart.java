@@ -13,7 +13,7 @@ public class PieChart extends JPanel {
     private static final Color PROTEIN_COLOR = new Color(233,225,255);
     private static final Color GRAIN_COLOR = new Color(245,222,179);
     private static final Color OTHERS_COLOR = new Color(216,191,216);
-    private static final Dimension PIE_CHART_DIMENSION = new Dimension(500, 500);
+    private static final Dimension PIE_CHART_DIMENSION = new Dimension(550, 500);
     private static final Font font = new Font("Comics", Font.BOLD, 18);
     private ArrayList<PieChartSlice> slices;
     private PieChartSlice vegeSlice;

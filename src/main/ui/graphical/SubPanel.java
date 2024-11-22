@@ -8,7 +8,7 @@ import java.awt.*;
 public class SubPanel extends JPanel {
     private static final Color BACKGROUND = new Color(224,255,255);
     private static final GridLayout LAYOUT = new GridLayout(0, 1, 0, 3);
-    private static final Dimension PANE_DIMENSION = new Dimension(500, 500);
+    private static final Dimension PANE_DIMENSION = new Dimension(550, 500);
 
     // EFFECTS: constructs the subpanel with desired background, layout, and sets to visible
     public SubPanel() {
