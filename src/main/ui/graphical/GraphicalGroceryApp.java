@@ -12,6 +12,8 @@ import java.io.FileNotFoundException;
 import model.GroceryList;
 import persistence.JsonWriter;
 
+import java.util.ArrayList;
+
 // Creates the GUI panel of the grocery list app 
 public class GraphicalGroceryApp implements ActionListener {
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
@@ -40,6 +42,8 @@ public class GraphicalGroceryApp implements ActionListener {
     private MessageButton fruitButton;
     private MessageButton otherButton;
     private String category;
+
+    private ArrayList<Grocery> currentList;
 
     // EFFECTS: takes the groceryList passed in, initialize the groceryList field
     //          displays the grocery list
@@ -121,8 +125,9 @@ public class GraphicalGroceryApp implements ActionListener {
     // EFFECTS: add grocery buttons to the viewListPanel if applicable,
     //          add button indicating empty grocery list if needed.
     public void addGroceryButtons() {
-        if (groceryList.getGroceries().size() > 0) {
-            for (Grocery next: groceryList.getGroceries()) {
+        currentList = groceryList.getGroceries();
+        if (currentList.size() > 0) {
+            for (Grocery next: currentList) {
                 GroceryButton groceryButton = new GroceryButton(next.getName(), next.getPrice(), next.getCategory());
                 viewListPanel.add(groceryButton);
             }
@@ -189,7 +194,7 @@ public class GraphicalGroceryApp implements ActionListener {
     // MODIFIES: this
     // EFFECTS: panel that displays the nutrition distribution by a pie chart
     private void displayNutrition() {
-        if (groceryList.getGroceries().size() > 0) {
+        if (currentList.size() > 0) {
             groceryList.calcPercent();
             double vegePerct = groceryList.getVegePerct();
             double fruitPerct = groceryList.getFruitPerct();
@@ -245,8 +250,8 @@ public class GraphicalGroceryApp implements ActionListener {
     // EFFECTS: removes the first grocery with given name in the groceryList
     //          return true if grocery was in the list, false if cannot find it
     private boolean removeFirstInList(GroceryList groceryList, String nameToRemove) {
-        for (int i = 0; i < groceryList.getGroceries().size(); i++) {
-            Grocery current =  groceryList.getGroceries().get(i);
+        for (int i = 0; i < currentList.size(); i++) {
+            Grocery current =  currentList.get(i);
             if (current.getName().equals(nameToRemove)) {
                 groceryList.removeGrocery(current);
                 return true;
