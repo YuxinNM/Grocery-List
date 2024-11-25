@@ -54,6 +54,7 @@ public class GroceryList implements Writable {
         groceries.add(grocery);
         countUp(grocery.getCategory());
         totalPrice += grocery.getPrice();
+        //add grocery item!!!
     }
 
     // MODIFIES: this
@@ -83,6 +84,7 @@ public class GroceryList implements Writable {
         groceries.remove(grocery);
         countDown(grocery.getCategory());
         totalPrice -= grocery.getPrice();
+        //remove grocery!!!
     }
     
     // MODIFIES: this
@@ -113,12 +115,14 @@ public class GroceryList implements Writable {
         this.grainsPerct = getGrainsCount() * 100 / size;
         this.proteinPerct = getProteinCount() * 100 / size;
         this.othersPerct = getOthersCount() * 100 / size;
+        //get the percentages of food groups!!!(nutrition report)
     }
 
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("groceries", groceriesToJson());
+        // save the grocery list to file!!!
         return json;
     }
 
@@ -135,6 +139,7 @@ public class GroceryList implements Writable {
 
     public double getTotalPrice() {
         return totalPrice;
+        //get the total price!!!
     }
 
     public int getVegeCount() {
@@ -179,5 +184,6 @@ public class GroceryList implements Writable {
 
     public ArrayList<Grocery> getGroceries() {
         return groceries;
+        //display the groceries in the list!!!
     }
 }
