@@ -74,4 +74,15 @@ After the user selected to load or not load their previous list of groceries, th
 - click on the *Actions* menu bar, there will be a drop down menu
 - click on *View groceries*
 
+# Phase 4: Task 2
+- An example would be removing a grocery item from the list: 
+The code is copied here from the GroceryList class:
+
+public void removeGrocery(Grocery grocery) {
+        groceries.remove(grocery);
+        countDown(grocery.getCategory());
+        totalPrice -= grocery.getPrice();
+        EventLog.getInstance().logEvent(new Event("A grocery item is removed from the list"));
+    }
+
 
