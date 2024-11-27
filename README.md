@@ -75,7 +75,7 @@ After the user selected to load or not load their previous list of groceries, th
 - click on *View groceries*
 
 # Phase 4: Task 2
-- An example would be removing a grocery item from the list: 
+- An example would be removing a grocery item from the list: \
 The code is copied here from the GroceryList class:
 
 public void removeGrocery(Grocery grocery) {\
