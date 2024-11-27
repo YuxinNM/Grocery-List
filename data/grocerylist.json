@@ -1,18 +1,8 @@
 {"groceries": [
     {
-        "price": 6,
-        "name": "cookie",
-        "category": "others"
-    },
-    {
         "price": 6.99,
         "name": "bread",
         "category": "grains"
-    },
-    {
-        "price": 9.99,
-        "name": "chicken",
-        "category": "proteins"
     },
     {
         "price": 8,
@@ -45,8 +35,8 @@
         "category": "vegetables"
     },
     {
-        "price": 6.99,
-        "name": "peach",
-        "category": "fruits"
+        "price": 3.99,
+        "name": "cookie",
+        "category": "others"
     }
 ]}

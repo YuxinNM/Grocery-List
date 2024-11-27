@@ -111,7 +111,7 @@ public class GroceryList implements Writable {
     // EFFECTS: calculate the percentages of each category to ones digit 
     //          counts of each category / the size of the list
     public void calcPercent() {
-        int size = getGroceries().size();
+        int size = groceries.size();
         this.vegePerct = getVegeCount() * 100 / size;
         this.fruitPerct = getFruitCount() * 100 / size;
         this.grainsPerct = getGrainsCount() * 100 / size;
