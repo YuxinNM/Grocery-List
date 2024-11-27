@@ -55,7 +55,6 @@ public class GroceryList implements Writable {
         countUp(grocery.getCategory());
         totalPrice += grocery.getPrice();
         EventLog.getInstance().logEvent(new Event("A new grocery is added to the list"));
-        //add grocery item!!!
     }
 
     // MODIFIES: this
@@ -86,7 +85,6 @@ public class GroceryList implements Writable {
         countDown(grocery.getCategory());
         totalPrice -= grocery.getPrice();
         EventLog.getInstance().logEvent(new Event("A grocery item is removed from the list"));
-        //remove grocery!!!
     }
     
     // MODIFIES: this
@@ -118,7 +116,6 @@ public class GroceryList implements Writable {
         this.proteinPerct = getProteinCount() * 100 / size;
         this.othersPerct = getOthersCount() * 100 / size;
         EventLog.getInstance().logEvent(new Event("Percentages of food groups are calculated for nutritional report"));
-        //get the percentages of food groups!!!(nutrition report)
     }
 
     @Override
@@ -126,7 +123,6 @@ public class GroceryList implements Writable {
         JSONObject json = new JSONObject();
         json.put("groceries", groceriesToJson());
         EventLog.getInstance().logEvent(new Event("Saves grocery list to file"));
-        // save the grocery list to file!!!
         return json;
     }
 
@@ -144,7 +140,6 @@ public class GroceryList implements Writable {
     public double getTotalPrice() {
         EventLog.getInstance().logEvent(new Event("Total price is displayed"));
         return totalPrice;
-        //get the total price!!!
     }
 
     public int getVegeCount() {
@@ -190,6 +185,5 @@ public class GroceryList implements Writable {
     public ArrayList<Grocery> getGroceries() {
         EventLog.getInstance().logEvent(new Event("the grocery list is displayed"));
         return groceries;
-        //display the groceries in the list!!!
     }
 }
