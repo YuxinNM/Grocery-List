@@ -7,12 +7,7 @@ import model.exception.LogException;
 
 // Prints out the events logged
 public class printEventLog implements LogPrinter {
-    
-    // //EFFECT: Constructor sets up the printer to the console
-    // public printEventLog() {
-    //     super();
-    // }
- 
+
     // EFFECT: prints all the events in the eventlog to the console
     @Override
     public void printLog(EventLog el) throws LogException {
