@@ -15,11 +15,6 @@
         "category": "proteins"
     },
     {
-        "price": 10.99,
-        "name": "shrimp",
-        "category": "proteins"
-    },
-    {
         "price": 7.68,
         "name": "noodle",
         "category": "grains"
@@ -38,5 +33,10 @@
         "price": 3.99,
         "name": "cookie",
         "category": "others"
+    },
+    {
+        "price": 9.99,
+        "name": "shrimp",
+        "category": "proteins"
     }
 ]}
