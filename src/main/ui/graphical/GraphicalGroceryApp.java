@@ -14,7 +14,7 @@ import model.GroceryList;
 import model.exception.LogException;
 import persistence.JsonWriter;
 import ui.LogPrinter;
-import ui.printEventLog;
+import ui.ConsoleEventPrinter;
 
 import java.util.ArrayList;
 
@@ -444,7 +444,7 @@ public class GraphicalGroceryApp implements ActionListener, WindowListener {
     // EFFECTS: prints out the events in eventlog when closing window
     @Override
     public void windowClosing(WindowEvent e) {
-        LogPrinter lp = new printEventLog(); 
+        LogPrinter lp = new ConsoleEventPrinter(); 
         try {
             lp.printLog(EventLog.getInstance());
         } catch (LogException e1) {

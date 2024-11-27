@@ -1,3 +1,4 @@
+
 package ui;
 
 import model.Event;
@@ -6,7 +7,7 @@ import model.EventLog;
 import model.exception.LogException;
 
 // Prints out the events logged
-public class printEventLog implements LogPrinter {
+public class ConsoleEventPrinter implements LogPrinter {
 
     // EFFECT: prints all the events in the eventlog to the console
     @Override
