@@ -79,10 +79,10 @@ After the user selected to load or not load their previous list of groceries, th
 The code is copied here from the GroceryList class:
 
 public void removeGrocery(Grocery grocery) {\
-        &emsp groceries.remove(grocery);\
-        \t countDown(grocery.getCategory());\
-        \t totalPrice -= grocery.getPrice();\
-        \t EventLog.getInstance().logEvent(new Event("A grocery item is removed \t from the list"));\
+        &emsp; groceries.remove(grocery);\
+        &emsp; countDown(grocery.getCategory());\
+        &emsp; totalPrice -= grocery.getPrice();\
+        &emsp; EventLog.getInstance().logEvent(new Event("A grocery item is removed \t from the list"));\
     }
 
 
