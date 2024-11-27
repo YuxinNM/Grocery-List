@@ -2,6 +2,7 @@ package ui.graphical;
 
 import javax.swing.*;
 
+import model.EventLog;
 import model.Grocery;
 
 import java.awt.*;
@@ -10,12 +11,18 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 import model.GroceryList;
+import model.exception.LogException;
 import persistence.JsonWriter;
+import ui.LogPrinter;
+import ui.printEventLog;
 
 import java.util.ArrayList;
 
+import java.awt.event.WindowListener;
+import java.awt.event.WindowEvent;
+
 // Creates the GUI panel of the grocery list app 
-public class GraphicalGroceryApp implements ActionListener {
+public class GraphicalGroceryApp implements ActionListener, WindowListener {
     private static final String JSON_DESTINATION = "./data/grocerylist.json";
     private JFrame groceryFrame;
     private SubPanel viewListPanel;
@@ -99,6 +106,7 @@ public class GraphicalGroceryApp implements ActionListener {
     public void displayFrame() {
         groceryFrame = new JFrame();
         groceryFrame.setTitle("Grocery List");
+        groceryFrame.addWindowListener(this);
         groceryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         groceryFrame.setLocation(350, 80);;
         groceryFrame.setSize(550, 500);
@@ -427,5 +435,41 @@ public class GraphicalGroceryApp implements ActionListener {
         displayPricePanel.add(tellPriceButton);
         mainPanel.add(displayPricePanel);
         groceryFrame.pack();
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    // EFFECTS: prints out the events in eventlog when closing window
+    @Override
+    public void windowClosing(WindowEvent e) {
+        LogPrinter lp = new printEventLog(); 
+        try {
+            lp.printLog(EventLog.getInstance());
+        } catch (LogException e1) {
+            System.out.println(e1.getMessage());
+        }
+        groceryFrame.dispose();
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
     }
 }
