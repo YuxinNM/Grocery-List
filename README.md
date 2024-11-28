@@ -82,7 +82,7 @@ public void removeGrocery(Grocery grocery) {\
         &emsp; groceries.remove(grocery);\
         &emsp; countDown(grocery.getCategory());\
         &emsp; totalPrice -= grocery.getPrice();\
-        &emsp; EventLog.getInstance().logEvent(new Event("A grocery item is removed \t from the list"));\
+        &emsp; EventLog.getInstance().logEvent(new Event("A grocery item is removed from the list"));\
     }\
 What it looks like in the console:\
 Wed Nov 27 21:28:25 PST 2024\
