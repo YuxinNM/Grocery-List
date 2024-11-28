@@ -85,4 +85,6 @@ public void removeGrocery(Grocery grocery) {\
         &emsp; EventLog.getInstance().logEvent(new Event("A grocery item is removed \t from the list"));\
     }
 
-
+# Phase 4: Task 3
+- I could refactor the GraphicalGroceryApp, LaunchPage and GroceryApp by creating an abstract class. The abstract class should have a field of GroceryList, JsonWriter and JsonReader. As for now, these three classes share similiar behaviors such as reading from file, writing into file, and acting upon a GroceryList. By having these three classes extending from the abstract class, we can have less duplicated code.
+- Even though GraphicalGroceryApp and LaunchPage have splitted the responsibilities that GroceryApp has, it would be better to split the responsibilites even further. The GraphicalGroceryApp class has different panels that represent display windows for each action in the menu. The code would be more reable if I create a new class for each of the actions and call on their constructors from the GraphicalGroceryApp. Similiarly, the GroceryApp class can also be refactored this way.
