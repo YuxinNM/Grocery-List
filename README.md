@@ -83,7 +83,10 @@ public void removeGrocery(Grocery grocery) {\
         &emsp; countDown(grocery.getCategory());\
         &emsp; totalPrice -= grocery.getPrice();\
         &emsp; EventLog.getInstance().logEvent(new Event("A grocery item is removed \t from the list"));\
-    }
+    }\
+What it looks like in the console:\
+Wed Nov 27 21:28:25 PST 2024\
+A grocery item is removed from the list
 
 # Phase 4: Task 3
 - I could refactor the GraphicalGroceryApp, LaunchPage and GroceryApp by creating an abstract class. The abstract class should have a field of GroceryList, JsonWriter and JsonReader. As for now, these three classes share similiar behaviors such as reading from file, writing into file, and acting upon a GroceryList. By having these three classes extending from the abstract class, we can have less duplicated code.
